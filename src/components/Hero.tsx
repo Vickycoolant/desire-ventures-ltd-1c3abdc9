@@ -37,13 +37,12 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-20 text-center">
         <div className={`transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0 translate-y-10'}`}>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            <span className="block reveal reveal-delay-1">Premium Water Services</span>
-            <span className="block text-primary-200 reveal reveal-delay-2">For Every Need</span>
+            <span className="block reveal reveal-delay-1">Reliable Bulk Water Delivery</span>
+            <span className="block text-primary-200 reveal reveal-delay-2">When You Need It, Where You Need It!</span>
           </h1>
           
           <p className="text-xl text-white/90 max-w-3xl mx-auto mb-10 reveal reveal-delay-3">
-            Desire Ventures provides exceptional water delivery and cleaning services 
-            with unmatched efficiency and reliability throughout Nairobi and surrounding areas.
+            The Fastest Clean Water Deliveries in Nairobi!
           </p>
           
           <div className="flex flex-col sm:flex-row justify-center gap-4 reveal reveal-delay-4">
