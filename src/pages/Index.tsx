@@ -5,7 +5,7 @@ import Hero from '../components/Hero';
 import Services from '../components/Services';
 import ServiceAreas from '../components/ServiceAreas';
 import AboutUs from '../components/AboutUs';
-import Testimonials from '../components/Testimonials';
+import Clients from '../components/Clients';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 
@@ -31,7 +31,7 @@ const Index = () => {
       const windowHeight = window.innerHeight;
       
       if (elementTop < windowHeight - 100) {
-        el.classList.add('active');
+        el.classList.add("active");
       }
     });
     
@@ -56,7 +56,7 @@ const Index = () => {
         <Services />
         <ServiceAreas />
         <AboutUs />
-        <Testimonials />
+        <Clients />
         <ContactSection />
       </main>
       <Footer />
