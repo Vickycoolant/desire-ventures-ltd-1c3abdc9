@@ -53,7 +53,7 @@ const Navbar = () => {
             <span className="text-primary-800 font-bold text-lg">DV</span>
           </div>
           <h1 className="text-xl font-bold text-white">
-            <span className="hidden sm:inline">Desire</span> Ventures
+            Desire Ventures
           </h1>
         </div>
         

@@ -8,7 +8,7 @@ const serviceData = [
     icon: <Truck className="h-12 w-12 text-primary-600" />,
     title: "Clean Water Delivery",
     description: "Premium water delivery services for homes and businesses with state-of-the-art tankers ensuring timely and reliable supply even during shortages.",
-    imageSrc: "https://images.unsplash.com/photo-1504893524553-b855bce32c67",
+    imageSrc: "/lovable-uploads/d6d383cf-74d2-4a2c-a950-7b5b223b4c50.png",
     delay: 1
   },
   {
@@ -16,7 +16,7 @@ const serviceData = [
     icon: <RefreshCw className="h-12 w-12 text-primary-600" />,
     title: "Tank & Reservoir Cleaning",
     description: "Professional cleaning and sanitization of water tanks and reservoirs with eco-friendly solutions, maintaining the highest standards of water hygiene.",
-    imageSrc: "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+    imageSrc: "/lovable-uploads/1ababbbf-0b19-4a3b-a24c-5b9f095c933f.png",
     delay: 2
   },
   {
@@ -24,7 +24,7 @@ const serviceData = [
     icon: <ShieldCheck className="h-12 w-12 text-primary-600" />,
     title: "Exhauster Services",
     description: "Complete waste management solutions with state-of-the-art exhauster services, ensuring clean environments and preventing water contamination.",
-    imageSrc: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21",
+    imageSrc: "https://images.unsplash.com/photo-1613516429929-0127385cfcce?q=80&w=1000&auto=format&fit=crop",
     delay: 3
   }
 ];

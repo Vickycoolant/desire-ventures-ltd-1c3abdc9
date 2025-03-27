@@ -77,11 +77,16 @@ const ServiceAreas = () => {
               <div className="absolute -bottom-8 -right-8 w-24 h-24 bg-primary-300 rounded-full opacity-40"></div>
               
               <div className="relative z-10 aspect-square overflow-hidden rounded-lg">
-                <img 
-                  src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/36.8219,-1.2921,10,0/600x600?access_token=pk.eyJ1IjoibG92YWJsZS1haSIsImEiOiJjbHBnY294ZTYwMjg2MmpwODJwdWxwNXBtIn0.Z8TnKtD65Xl4k7c1nT8ejw" 
-                  alt="Map of Nairobi service areas" 
-                  className="w-full h-full object-cover"
-                />
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255282.3588120321!2d36.70730561387407!3d-1.3028617913909354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7cf0254b297924c!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2sus!4v1717009151217!5m2!1sen!2sus" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen={false} 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="absolute inset-0 w-full h-full"
+                ></iframe>
                 
                 {/* Animated Location pins */}
                 {serviceLocations.map((location) => (

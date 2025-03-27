@@ -8,6 +8,7 @@ import AboutUs from '../components/AboutUs';
 import Clients from '../components/Clients';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
+import WhatsAppButton from '../components/WhatsAppButton';
 
 const Index = () => {
   useEffect(() => {
@@ -70,6 +71,36 @@ const Index = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
         </svg>
       </button>
+      
+      {/* WhatsApp floating button */}
+      <WhatsAppButton />
+      
+      {/* Add necessary CSS for flip cards */}
+      <style jsx global>{`
+        .perspective {
+          perspective: 1000px;
+        }
+        .transform-style-3d {
+          transform-style: preserve-3d;
+        }
+        .backface-hidden {
+          backface-visibility: hidden;
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes dropIn {
+          from { opacity: 0; transform: translateY(-10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-dropIn {
+          animation: dropIn 0.3s ease-in-out;
+        }
+      `}</style>
     </div>
   );
 };

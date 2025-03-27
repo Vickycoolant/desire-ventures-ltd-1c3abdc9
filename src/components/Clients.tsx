@@ -1,40 +1,57 @@
 
 import { useState, useEffect } from 'react';
+import { ArrowRight, ArrowLeft } from 'lucide-react';
 
 const clients = [
   {
     id: 1,
     name: "The Junction Mall",
-    logo: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGJ1aWxkaW5nJTIwbG9nb3xlbnwwfHwwfHx8MA%3D%3D"
+    logo: "https://images.unsplash.com/photo-1519567770768-d0d273e48400?q=80&w=1000&auto=format&fit=crop",
+    testimonial: "Desire Ventures has been instrumental in maintaining our water supply during shortages. Their quick response time and professional service make them our preferred water supplier."
   },
   {
     id: 2,
     name: "Lavington Green Shopping Mall",
-    logo: "https://images.unsplash.com/photo-1611080626919-7cf5a9729891?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bW9kZXJuJTIwYnVpbGRpbmd8ZW58MHx8MHx8fDA%3D"
+    logo: "https://images.unsplash.com/photo-1611080626919-7cf5a9729891?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bW9kZXJuJTIwYnVpbGRpbmd8ZW58MHx8MHx8fDA%3D",
+    testimonial: "We've been working with Desire Ventures for our mall's water needs for over two years. Their reliability and consistent quality service have exceeded our expectations."
   },
   {
     id: 3,
     name: "Heritage Properties Ltd",
-    logo: "https://images.unsplash.com/photo-1625602812206-5ec545ca1231?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cHJvcGVydHl8ZW58MHx8MHx8fDA%3D"
+    logo: "https://images.unsplash.com/photo-1625602812206-5ec545ca1231?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cHJvcGVydHl8ZW58MHx8MHx8fDA%3D",
+    testimonial: "The tank cleaning service provided by Desire Ventures ensures our properties maintain the highest standards of water quality. Their team is thorough and professional."
   },
   {
     id: 4,
     name: "French School Nairobi",
-    logo: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2Nob29sfGVufDB8fDB8fHww"
+    logo: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2Nob29sfGVufDB8fDB8fHww",
+    testimonial: "As an educational institution, we prioritize clean water for our students. Desire Ventures has been our trusted partner, ensuring uninterrupted supply even during city-wide shortages."
   },
   {
     id: 5,
     name: "Gimco Ltd",
-    logo: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29ycG9yYXRlJTIwYnVpbGRpbmd8ZW58MHx8MHx8fDA%3D"
+    logo: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29ycG9yYXRlJTIwYnVpbGRpbmd8ZW58MHx8MHx8fDA%3D",
+    testimonial: "We've relied on Desire Ventures for both regular water delivery and emergency services. Their 24/7 availability and quick response time have been invaluable to our operations."
   },
   {
     id: 6,
     name: "Ewrealite Properties",
-    logo: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cHJvcGVydHl8ZW58MHx8MHx8fDA%3D"
+    logo: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cHJvcGVydHl8ZW58MHx8MHx8fDA%3D",
+    testimonial: "The exhauster services from Desire Ventures are efficient and environmentally conscious. Their team is professional and completes the work with minimal disruption."
   }
 ];
 
 const Clients = () => {
+  const [flippedCards, setFlippedCards] = useState<number[]>([]);
+  
+  const toggleFlip = (id: number) => {
+    if (flippedCards.includes(id)) {
+      setFlippedCards(flippedCards.filter(cardId => cardId !== id));
+    } else {
+      setFlippedCards([...flippedCards, id]);
+    }
+  };
+  
   useEffect(() => {
     const revealElements = document.querySelectorAll('.reveal');
     
@@ -87,7 +104,7 @@ const Clients = () => {
           </h2>
           <p className="text-lg text-white/80 max-w-3xl mx-auto reveal reveal-delay-1">
             Desire Ventures proudly serves a diverse range of prestigious clients
-            across Nairobi and surrounding areas.
+            across Nairobi and surrounding areas. Click on each client to see their experience with us.
           </p>
           
           <div className="flex items-center justify-center mt-4 reveal reveal-delay-2">
@@ -99,16 +116,46 @@ const Clients = () => {
         
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-16 reveal reveal-delay-2">
           {clients.map((client) => (
-            <div key={client.id} className="bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden transition-all hover:transform hover:scale-105 border border-white/10">
-              <div className="h-48 overflow-hidden">
-                <img 
-                  src={client.logo}
-                  alt={client.name}
-                  className="w-full h-full object-cover transition-transform hover:scale-110"
-                />
-              </div>
-              <div className="p-4 text-center">
-                <h3 className="font-bold">{client.name}</h3>
+            <div 
+              key={client.id} 
+              className={`bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-500 border border-white/10 h-[300px] cursor-pointer perspective ${
+                flippedCards.includes(client.id) ? 'flip' : ''
+              }`}
+              onClick={() => toggleFlip(client.id)}
+            >
+              <div className="relative w-full h-full transform-style-3d transition-transform duration-700 ease-in-out" style={{ 
+                transform: flippedCards.includes(client.id) ? 'rotateY(180deg)' : 'rotateY(0deg)'
+              }}>
+                {/* Front */}
+                <div className="absolute inset-0 backface-hidden">
+                  <div className="h-48 overflow-hidden">
+                    <img 
+                      src={client.logo}
+                      alt={client.name}
+                      className="w-full h-full object-cover transition-transform hover:scale-110"
+                    />
+                  </div>
+                  <div className="p-4 text-center">
+                    <h3 className="font-bold">{client.name}</h3>
+                    <div className="flex justify-center items-center mt-2 text-white/70">
+                      <span className="text-sm">Click to see experience</span>
+                      <ArrowRight size={16} className="ml-1" />
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Back */}
+                <div 
+                  className="absolute inset-0 bg-primary-700 p-6 flex flex-col justify-center items-center backface-hidden" 
+                  style={{ transform: 'rotateY(180deg)' }}
+                >
+                  <h3 className="font-bold mb-4 text-center">{client.name}</h3>
+                  <p className="text-white/90 text-center italic">"{client.testimonial}"</p>
+                  <div className="flex justify-center items-center mt-4 text-white/70">
+                    <ArrowLeft size={16} className="mr-1" />
+                    <span className="text-sm">Click to go back</span>
+                  </div>
+                </div>
               </div>
             </div>
           ))}

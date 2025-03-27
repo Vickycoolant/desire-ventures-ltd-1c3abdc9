@@ -24,8 +24,8 @@ const Hero = () => {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1482938289607-e9573fc25ebb" 
-          alt="Water background" 
+          src="/lovable-uploads/d6d383cf-74d2-4a2c-a950-7b5b223b4c50.png" 
+          alt="Water tanker truck" 
           className="w-full h-full object-cover opacity-50"
         />
       </div>
