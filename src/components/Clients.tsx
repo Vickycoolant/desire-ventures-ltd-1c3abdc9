@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 
@@ -6,13 +5,13 @@ const clients = [
   {
     id: 1,
     name: "The Junction Mall",
-    logo: "https://images.unsplash.com/photo-1519567770768-d0d273e48400?q=80&w=1000&auto=format&fit=crop",
+    logo: "/lovable-uploads/32a0205b-c24e-434a-b192-4c0e7c4119b5.png",
     testimonial: "Desire Ventures has been instrumental in maintaining our water supply during shortages. Their quick response time and professional service make them our preferred water supplier."
   },
   {
     id: 2,
     name: "Lavington Green Shopping Mall",
-    logo: "https://images.unsplash.com/photo-1611080626919-7cf5a9729891?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bW9kZXJuJTIwYnVpbGRpbmd8ZW58MHx8MHx8fDA%3D",
+    logo: "/lovable-uploads/569baef5-772a-4400-b913-0adf56b6a8c9.png",
     testimonial: "We've been working with Desire Ventures for our mall's water needs for over two years. Their reliability and consistent quality service have exceeded our expectations."
   },
   {
@@ -35,20 +34,20 @@ const clients = [
   },
   {
     id: 6,
-    name: "Ewrealite Properties",
-    logo: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cHJvcGVydHl8ZW58MHx8MHx8fDA%3D",
+    name: "Exhauster Services",
+    logo: "/lovable-uploads/dd5ddae1-8ee1-4cfe-bd17-64ad6e010f33.png",
     testimonial: "The exhauster services from Desire Ventures are efficient and environmentally conscious. Their team is professional and completes the work with minimal disruption."
   }
 ];
 
 const Clients = () => {
-  const [flippedCards, setFlippedCards] = useState<number[]>([]);
+  const [activeCardId, setActiveCardId] = useState<number | null>(null);
   
   const toggleFlip = (id: number) => {
-    if (flippedCards.includes(id)) {
-      setFlippedCards(flippedCards.filter(cardId => cardId !== id));
+    if (activeCardId === id) {
+      setActiveCardId(null);
     } else {
-      setFlippedCards([...flippedCards, id]);
+      setActiveCardId(id);
     }
   };
   
@@ -119,12 +118,12 @@ const Clients = () => {
             <div 
               key={client.id} 
               className={`bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-500 border border-white/10 h-[300px] cursor-pointer perspective ${
-                flippedCards.includes(client.id) ? 'flip' : ''
+                activeCardId === client.id ? 'flip' : ''
               }`}
               onClick={() => toggleFlip(client.id)}
             >
               <div className="relative w-full h-full transform-style-3d transition-transform duration-700 ease-in-out" style={{ 
-                transform: flippedCards.includes(client.id) ? 'rotateY(180deg)' : 'rotateY(0deg)'
+                transform: activeCardId === client.id ? 'rotateY(180deg)' : 'rotateY(0deg)'
               }}>
                 {/* Front */}
                 <div className="absolute inset-0 backface-hidden">

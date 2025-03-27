@@ -24,7 +24,7 @@ const serviceData = [
     icon: <ShieldCheck className="h-12 w-12 text-primary-600" />,
     title: "Exhauster Services",
     description: "Complete waste management solutions with state-of-the-art exhauster services, ensuring clean environments and preventing water contamination.",
-    imageSrc: "https://images.unsplash.com/photo-1613516429929-0127385cfcce?q=80&w=1000&auto=format&fit=crop",
+    imageSrc: "/lovable-uploads/dd5ddae1-8ee1-4cfe-bd17-64ad6e010f33.png",
     delay: 3
   }
 ];

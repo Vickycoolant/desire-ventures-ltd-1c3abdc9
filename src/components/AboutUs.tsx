@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { Shield, Droplet, Clock, Users } from 'lucide-react';
 
@@ -50,11 +49,11 @@ const AboutUs = () => {
               <div className="absolute -bottom-4 -right-4 w-48 h-48 rounded-full bg-primary-200 z-0"></div>
               
               <div className="glass-card p-3 relative z-10">
-                <img 
-                  src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21"
-                  alt="Water delivery team" 
-                  className="rounded-lg w-full h-full object-cover"
-                />
+                <div className="rounded-lg w-full h-full flex items-center justify-center bg-white p-8">
+                  <div className="h-40 w-40 rounded-full bg-primary-600 flex items-center justify-center">
+                    <span className="text-white font-bold text-5xl">DV</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -111,7 +110,6 @@ const AboutUs = () => {
           </div>
         </div>
         
-        {/* Our Team Section */}
         <div className="mt-20 reveal reveal-delay-4">
           <h3 className="text-2xl font-bold text-center text-primary-800 mb-10">Our Leadership</h3>
           

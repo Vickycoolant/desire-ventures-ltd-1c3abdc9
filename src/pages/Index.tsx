@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -75,8 +76,8 @@ const Index = () => {
       <WhatsAppButton />
       
       {/* Add necessary CSS for flip cards */}
-      <style>
-        {`
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .perspective {
           perspective: 1000px;
         }
@@ -100,8 +101,8 @@ const Index = () => {
         .animate-dropIn {
           animation: dropIn 0.3s ease-in-out;
         }
-        `}
-      </style>
+        `
+      }} />
     </div>
   );
 };
