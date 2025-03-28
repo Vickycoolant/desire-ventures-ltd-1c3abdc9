@@ -1,4 +1,6 @@
+
 import { useState, useEffect } from 'react';
+import { ArrowRight } from 'lucide-react';
 
 const leadership = [
   {
