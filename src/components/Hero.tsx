@@ -1,68 +1,86 @@
-import React, { useEffect } from 'react';
+
+import { useEffect, useState } from 'react';
+import { ChevronDown } from 'lucide-react';
 
 const Hero = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  
   useEffect(() => {
-    const revealElements = document.querySelectorAll('.reveal');
-    
-    const revealOnScroll = () => {
-      for (let i = 0; i < revealElements.length; i++) {
-        const windowHeight = window.innerHeight;
-        const elementTop = revealElements[i].getBoundingClientRect().top;
-        const elementVisible = 150;
-        
-        if (elementTop < windowHeight - elementVisible) {
-          revealElements[i].classList.add("active");
-        }
-      }
-    };
-    
-    window.addEventListener("scroll", revealOnScroll);
-    revealOnScroll();
-    
-    return () => window.removeEventListener("scroll", revealOnScroll);
+    setIsLoaded(true);
   }, []);
   
+  const scrollToServices = () => {
+    const servicesSection = document.getElementById('services');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  
   return (
-    <section id="hero" className="water-bg py-24 md:py-32 relative overflow-hidden">
-      <div className="absolute inset-0 bg-primary-100 opacity-10 z-0"></div>
+    <section 
+      id="home" 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-primary-950/90 to-primary-800/90"
+    >
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="/lovable-uploads/d6d383cf-74d2-4a2c-a950-7b5b223b4c50.png" 
+          alt="Water tanker truck" 
+          className="w-full h-full object-cover opacity-50"
+        />
+      </div>
       
-      <div className="section-container relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div className="fade-in-view">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-900 mb-6">
-              Your Trusted Partner for <span className="text-gradient">Water Solutions</span>
-            </h1>
-            <p className="text-lg text-gray-700 mb-8">
-              Reliable water delivery, professional tank cleaning, and efficient exhauster services for Nairobi and beyond.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 mt-8">
-              <a 
-                href="https://wa.me/254706274350?text=Hello%20Desire%20Ventures!%20I%20would%20like%20to%20check%20water%20availability%20in%20my%20area." 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="water-btn group"
-              >
-                Check Availability
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2 transition-transform group-hover:translate-x-1"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-              </a>
-              <a 
-                href="#services" 
-                className="bg-white/10 backdrop-blur-md text-white border border-white/20 hover:bg-white/20 px-8 py-3 rounded-lg font-semibold transition-all"
-              >
-                Our Services
-              </a>
-            </div>
-          </div>
+      {/* Animated Overlay */}
+      <div className="absolute inset-0 bg-primary-900/30 z-10"></div>
+      
+      {/* Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-20 text-center">
+        <div className={`transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0 translate-y-10'}`}>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            <span className="block reveal reveal-delay-1">Reliable Bulk Water Delivery</span>
+            <span className="block text-primary-200 reveal reveal-delay-2">When You Need It, Where You Need It!</span>
+          </h1>
           
-          <div className="relative fade-in-view">
-            <img 
-              src="/lovable-uploads/4e75494b-98a5-4ca3-889c-7a9c7c9799c7.webp"
-              alt="Water Delivery Truck"
-              className="rounded-lg shadow-xl img-overlay image-fade"
-            />
+          <p className="text-xl text-white/90 max-w-3xl mx-auto mb-10 reveal reveal-delay-3">
+            The Fastest Clean Water Deliveries in Nairobi!
+          </p>
+          
+          <div className="flex flex-col sm:flex-row justify-center gap-4 reveal reveal-delay-4 mb-16 md:mb-0">
+            <a 
+              href="https://wa.me/254706274350?text=Hello%20Desire%20Ventures!%20I'm%20interested%20in%20your%20services." 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="water-btn group py-4 px-8 rounded-lg text-lg"
+            >
+              Request Service
+            </a>
+            <button 
+              onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-white/10 text-white border border-white/30 py-4 px-8 rounded-lg text-lg backdrop-blur-sm transition-all hover:bg-white/20"
+            >
+              Explore Services
+            </button>
           </div>
         </div>
+        
+        {/* Scroll Indicator */}
+        <div 
+          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-white animate-bounce cursor-pointer"
+          onClick={scrollToServices}
+        >
+          <ChevronDown size={36} />
+        </div>
+      </div>
+      
+      {/* Animated Wave Bottom */}
+      <div className="absolute bottom-0 left-0 w-full z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full">
+          <path 
+            fill="#fff" 
+            fillOpacity="1" 
+            d="M0,192L48,197.3C96,203,192,213,288,224C384,235,480,245,576,218.7C672,192,768,128,864,122.7C960,117,1056,171,1152,186.7C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+          ></path>
+        </svg>
       </div>
     </section>
   );

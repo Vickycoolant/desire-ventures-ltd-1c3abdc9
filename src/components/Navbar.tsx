@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
@@ -48,14 +49,16 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between w-full">
         <div className="flex items-center space-x-2">
-          <a href="/" className="flex items-center">
+          <div className="h-10 w-10 overflow-hidden rounded-[10px] bg-white flex items-center justify-center flex-shrink-0">
             <img 
-              src="/lovable-uploads/f1ebfc0b-2c9c-4fbc-9579-60407221e0b7.png" 
-              alt="Desire Ventures Ltd Logo" 
-              className="h-12 w-auto rounded-[10px] object-contain"
+              src="/lovable-uploads/2ab55cc8-3c4c-4e7a-9716-af191f2e6fad.png" 
+              alt="Desire Ventures Logo" 
+              className="h-full w-full object-cover"
             />
-            <span className="ml-3 text-xl font-bold text-primary-800 hidden sm:inline-block">Desire Ventures Ltd.</span>
-          </a>
+          </div>
+          <h1 className="text-xl font-bold text-white whitespace-nowrap">
+            Desire Ventures Ltd.
+          </h1>
         </div>
         
         {/* Desktop Menu */}

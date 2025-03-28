@@ -42,7 +42,12 @@ const clients = [
 ];
 
 const Clients = () => {
-  // Remove the activeCardId state since we'll use CSS hover instead
+  const [activeCardId, setActiveCardId] = useState<number | null>(null);
+  
+  const toggleFlip = (id: number) => {
+    // Toggle the flip - if the card is already active, set to null
+    setActiveCardId(activeCardId === id ? null : id);
+  };
   
   useEffect(() => {
     const revealElements = document.querySelectorAll('.reveal');
@@ -96,7 +101,7 @@ const Clients = () => {
           </h2>
           <p className="text-lg text-white/80 max-w-3xl mx-auto reveal reveal-delay-1">
             Desire Ventures proudly serves a diverse range of prestigious clients
-            across Nairobi and surrounding areas. Hover over each client to see their experience with us.
+            across Nairobi and surrounding areas. Click on each client to see their experience with us.
           </p>
           
           <div className="flex items-center justify-center mt-4 reveal reveal-delay-2">
@@ -110,11 +115,16 @@ const Clients = () => {
           {clients.map((client) => (
             <div 
               key={client.id} 
-              className="bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-500 border border-white/10 h-[300px] cursor-pointer perspective hover-flip"
+              className={`bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-500 border border-white/10 h-[300px] cursor-pointer perspective ${
+                activeCardId === client.id ? 'flip' : ''
+              }`}
+              onClick={() => toggleFlip(client.id)}
             >
-              <div className="relative w-full h-full transform-style-3d transition-transform duration-700 ease-in-out flip-card-inner">
+              <div className="relative w-full h-full transform-style-3d transition-transform duration-700 ease-in-out" style={{ 
+                transform: activeCardId === client.id ? 'rotateY(180deg)' : 'rotateY(0deg)'
+              }}>
                 {/* Front */}
-                <div className="absolute inset-0 backface-hidden flip-card-front">
+                <div className="absolute inset-0 backface-hidden">
                   <div className="h-48 overflow-hidden">
                     <img 
                       src={client.logo}
@@ -125,7 +135,7 @@ const Clients = () => {
                   <div className="p-4 text-center">
                     <h3 className="font-bold">{client.name}</h3>
                     <div className="flex justify-center items-center mt-2 text-white/70">
-                      <span className="text-sm">Hover to see experience</span>
+                      <span className="text-sm">Click to see experience</span>
                       <ArrowRight size={16} className="ml-1" />
                     </div>
                   </div>
@@ -133,10 +143,15 @@ const Clients = () => {
                 
                 {/* Back */}
                 <div 
-                  className="absolute inset-0 bg-primary-700 p-6 flex flex-col justify-center items-center backface-hidden flip-card-back" 
+                  className="absolute inset-0 bg-primary-700 p-6 flex flex-col justify-center items-center backface-hidden" 
+                  style={{ transform: 'rotateY(180deg)' }}
                 >
                   <h3 className="font-bold mb-4 text-center">{client.name}</h3>
                   <p className="text-white/90 text-center italic">"{client.testimonial}"</p>
+                  <div className="flex justify-center items-center mt-4 text-white/70">
+                    <ArrowLeft size={16} className="mr-1" />
+                    <span className="text-sm">Click to go back</span>
+                  </div>
                 </div>
               </div>
             </div>
