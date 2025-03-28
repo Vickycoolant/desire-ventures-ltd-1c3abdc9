@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { MapPin } from 'lucide-react';
 
@@ -6,11 +5,7 @@ const serviceLocations = [
   { id: 1, name: "Nairobi CBD", description: "Central business district with high demand for clean water services" },
   { id: 2, name: "Lang'ata", description: "Residential area with regular water delivery requirements" },
   { id: 3, name: "Lavington", description: "Premium residential area with high-quality water needs" },
-  { id: 4, name: "Kiambu", description: "Growing suburban area with increasing water service demand" },
-  { id: 5, name: "Ngong Road", description: "Mixed commercial and residential with diverse water requirements" },
-  { id: 6, name: "Karen", description: "Upscale residential area with large properties and tanks" },
-  { id: 7, name: "Westlands", description: "Commercial hub with business water supply needs" },
-  { id: 8, name: "Kilimani", description: "Residential and office area with consistent water demands" }
+  { id: 4, name: "Karen", description: "Upscale residential area with large properties and tanks" }
 ];
 
 const ServiceAreas = () => {
@@ -47,7 +42,6 @@ const ServiceAreas = () => {
   
   return (
     <section id="areas" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary-50 to-white relative overflow-hidden">
-      {/* Wave decoration top */}
       <div className="absolute top-0 left-0 w-full overflow-hidden">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full">
           <path 
@@ -70,7 +64,6 @@ const ServiceAreas = () => {
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Map visualization */}
           <div className="order-2 lg:order-1 reveal reveal-delay-2">
             <div className="glass-card p-6 relative overflow-hidden">
               <div className="absolute -top-16 -left-16 w-32 h-32 bg-primary-200 rounded-full opacity-50"></div>
@@ -88,7 +81,6 @@ const ServiceAreas = () => {
                   className="absolute inset-0 w-full h-full"
                 ></iframe>
                 
-                {/* Animated Location pins */}
                 {serviceLocations.map((location) => (
                   <div 
                     key={location.id}
@@ -120,7 +112,6 @@ const ServiceAreas = () => {
             </div>
           </div>
           
-          {/* Location list */}
           <div className="order-1 lg:order-2 reveal reveal-delay-3">
             <h3 className="text-2xl font-bold text-primary-800 mb-6">Areas We Serve</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

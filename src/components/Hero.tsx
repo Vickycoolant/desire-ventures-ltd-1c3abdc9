@@ -45,13 +45,15 @@ const Hero = () => {
             The Fastest Clean Water Deliveries in Nairobi!
           </p>
           
-          <div className="flex flex-col sm:flex-row justify-center gap-4 reveal reveal-delay-4">
-            <button 
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+          <div className="flex flex-col sm:flex-row justify-center gap-4 reveal reveal-delay-4 mb-16 md:mb-0">
+            <a 
+              href="https://wa.me/254706274350?text=Hello%20Desire%20Ventures!%20I'm%20interested%20in%20your%20services." 
+              target="_blank"
+              rel="noopener noreferrer"
               className="water-btn group py-4 px-8 rounded-lg text-lg"
             >
               Request Service
-            </button>
+            </a>
             <button 
               onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
               className="bg-white/10 text-white border border-white/30 py-4 px-8 rounded-lg text-lg backdrop-blur-sm transition-all hover:bg-white/20"
@@ -63,7 +65,7 @@ const Hero = () => {
         
         {/* Scroll Indicator */}
         <div 
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce cursor-pointer"
+          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-white animate-bounce cursor-pointer"
           onClick={scrollToServices}
         >
           <ChevronDown size={36} />

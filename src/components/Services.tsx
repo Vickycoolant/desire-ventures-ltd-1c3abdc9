@@ -73,7 +73,7 @@ const Services = () => {
           </p>
         </div>
         
-        <div className="flex flex-col md:flex-row gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
           {serviceData.map((service) => (
             <div 
               key={service.id} 
@@ -119,7 +119,8 @@ const Services = () => {
                   <Droplet className="h-7 w-7 text-primary-600" />
                 </div>
                 <h4 className="font-semibold text-gray-900">High Quality</h4>
-                <p className="text-sm text-gray-600 mt-2 hidden md:block">Premium purified water for all your needs</p>
+                <p className="text-sm text-gray-600 mt-2 sm:hidden">Premium purified water</p>
+                <p className="text-sm text-gray-600 mt-2 hidden sm:block">Premium purified water for all your needs</p>
               </div>
               <div className="flex flex-col items-center">
                 <div className="h-14 w-14 rounded-full bg-primary-100 flex items-center justify-center mb-3">
@@ -128,7 +129,8 @@ const Services = () => {
                   </svg>
                 </div>
                 <h4 className="font-semibold text-gray-900">Fast Delivery</h4>
-                <p className="text-sm text-gray-600 mt-2 hidden md:block">Guaranteed prompt delivery within hours</p>
+                <p className="text-sm text-gray-600 mt-2 sm:hidden">Prompt delivery</p>
+                <p className="text-sm text-gray-600 mt-2 hidden sm:block">Guaranteed prompt delivery within hours</p>
               </div>
               <div className="flex flex-col items-center">
                 <div className="h-14 w-14 rounded-full bg-primary-100 flex items-center justify-center mb-3">
@@ -137,7 +139,8 @@ const Services = () => {
                   </svg>
                 </div>
                 <h4 className="font-semibold text-gray-900">Reliable & Safe</h4>
-                <p className="text-sm text-gray-600 mt-2 hidden md:block">Rigorously tested for safety and purity</p>
+                <p className="text-sm text-gray-600 mt-2 sm:hidden">Tested for safety</p>
+                <p className="text-sm text-gray-600 mt-2 hidden sm:block">Rigorously tested for safety and purity</p>
               </div>
               <div className="flex flex-col items-center">
                 <div className="h-14 w-14 rounded-full bg-primary-100 flex items-center justify-center mb-3">
@@ -146,7 +149,8 @@ const Services = () => {
                   </svg>
                 </div>
                 <h4 className="font-semibold text-gray-900">24/7 Support</h4>
-                <p className="text-sm text-gray-600 mt-2 hidden md:block">Always available to assist with your needs</p>
+                <p className="text-sm text-gray-600 mt-2 sm:hidden">Always available</p>
+                <p className="text-sm text-gray-600 mt-2 hidden sm:block">Always available to assist with your needs</p>
               </div>
             </div>
           </div>

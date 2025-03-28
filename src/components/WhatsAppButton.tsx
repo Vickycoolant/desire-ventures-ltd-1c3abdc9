@@ -33,6 +33,7 @@ const WhatsAppButton = () => {
         href="https://wa.me/254706274350?text=Hello%20Desire%20Ventures!%20I'm%20interested%20in%20your%20services." 
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Chat with us on WhatsApp"
         className="bg-[#25D366] hover:bg-[#22c55e] text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
         onMouseEnter={() => setIsTooltipVisible(true)}
         onMouseLeave={() => setIsTooltipVisible(false)}

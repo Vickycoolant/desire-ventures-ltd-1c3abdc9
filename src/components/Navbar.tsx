@@ -49,11 +49,15 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between w-full">
         <div className="flex items-center space-x-2">
-          <div className="h-10 w-10 rounded-full bg-white flex items-center justify-center flex-shrink-0">
-            <span className="text-primary-800 font-bold text-lg">DV</span>
+          <div className="h-10 w-10 overflow-hidden rounded-[10px] bg-white flex items-center justify-center flex-shrink-0">
+            <img 
+              src="/lovable-uploads/2ab55cc8-3c4c-4e7a-9716-af191f2e6fad.png" 
+              alt="Desire Ventures Logo" 
+              className="h-full w-full object-cover"
+            />
           </div>
           <h1 className="text-xl font-bold text-white whitespace-nowrap">
-            Desire Ventures
+            Desire Ventures Ltd.
           </h1>
         </div>
         

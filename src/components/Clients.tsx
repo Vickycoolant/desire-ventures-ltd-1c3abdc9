@@ -36,7 +36,7 @@ const clients = [
   {
     id: 6,
     name: "Karen Country Club",
-    logo: "https://images.unsplash.com/photo-1601177863086-17088b87eca3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNvdW50cnklMjBjbHVifGVufDB8fDB8fHww",
+    logo: "/lovable-uploads/ff3a166b-4b36-4c35-adfd-fea5d3b546da.png",
     testimonial: "The quality of service from Desire Ventures has been exceptional. Their dedication to water conservation and sustainable practices aligns perfectly with our environmental goals."
   }
 ];
@@ -45,7 +45,8 @@ const Clients = () => {
   const [activeCardId, setActiveCardId] = useState<number | null>(null);
   
   const toggleFlip = (id: number) => {
-    setActiveCardId(id);
+    // Toggle the flip - if the card is already active, set to null
+    setActiveCardId(activeCardId === id ? null : id);
   };
   
   useEffect(() => {
@@ -159,12 +160,14 @@ const Clients = () => {
         
         <div className="mt-16 text-center reveal reveal-delay-3">
           <h3 className="text-2xl font-bold mb-6">Join Our Growing List of Satisfied Clients</h3>
-          <button 
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-white text-primary-800 py-3 px-8 rounded-lg font-semibold hover:bg-white/90 transition-colors shadow-lg"
+          <a 
+            href="https://wa.me/254706274350?text=Hello%20Desire%20Ventures!%20I'm%20interested%20in%20your%20services." 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white text-primary-800 py-3 px-8 rounded-lg font-semibold hover:bg-white/90 transition-colors shadow-lg inline-block"
           >
             Contact Us Today
-          </button>
+          </a>
         </div>
       </div>
     </section>
