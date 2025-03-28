@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 
@@ -34,9 +35,9 @@ const clients = [
   },
   {
     id: 6,
-    name: "Exhauster Services",
-    logo: "/lovable-uploads/dd5ddae1-8ee1-4cfe-bd17-64ad6e010f33.png",
-    testimonial: "The exhauster services from Desire Ventures are efficient and environmentally conscious. Their team is professional and completes the work with minimal disruption."
+    name: "Karen Country Club",
+    logo: "https://images.unsplash.com/photo-1601177863086-17088b87eca3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNvdW50cnklMjBjbHVifGVufDB8fDB8fHww",
+    testimonial: "The quality of service from Desire Ventures has been exceptional. Their dedication to water conservation and sustainable practices aligns perfectly with our environmental goals."
   }
 ];
 
@@ -44,11 +45,7 @@ const Clients = () => {
   const [activeCardId, setActiveCardId] = useState<number | null>(null);
   
   const toggleFlip = (id: number) => {
-    if (activeCardId === id) {
-      setActiveCardId(null);
-    } else {
-      setActiveCardId(id);
-    }
+    setActiveCardId(id);
   };
   
   useEffect(() => {

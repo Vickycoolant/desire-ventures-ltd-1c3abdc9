@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import { Shield, Droplet, Clock, Users } from 'lucide-react';
 
@@ -42,23 +43,8 @@ const AboutUs = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-          <div className="reveal reveal-delay-2">
-            <div className="relative">
-              <div className="absolute -top-4 -left-4 w-64 h-64 rounded-full bg-primary-100 z-0"></div>
-              <div className="absolute -bottom-4 -right-4 w-48 h-48 rounded-full bg-primary-200 z-0"></div>
-              
-              <div className="glass-card p-3 relative z-10">
-                <div className="rounded-lg w-full h-full flex items-center justify-center bg-white p-8">
-                  <div className="h-40 w-40 rounded-full bg-primary-600 flex items-center justify-center">
-                    <span className="text-white font-bold text-5xl">DV</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="reveal reveal-delay-3">
+        <div className="flex flex-col lg:flex-row gap-12 mb-16">
+          <div className="reveal reveal-delay-3 lg:w-1/2">
             <h3 className="text-2xl font-bold text-primary-800 mb-4">Our Mission</h3>
             <p className="text-gray-700 mb-6">
               At Desire Ventures, we're on a mission to solve water accessibility challenges by providing 
@@ -73,8 +59,10 @@ const AboutUs = () => {
               that exceed expectations. Our team of trained professionals ensures that every service is 
               performed with the highest standards of quality and safety.
             </p>
-            
-            <div className="grid grid-cols-2 gap-4 mt-8">
+          </div>
+          
+          <div className="lg:w-1/2">
+            <div className="grid grid-cols-2 gap-4 reveal reveal-delay-4">
               <div className="flex flex-col items-center bg-primary-50 p-4 rounded-lg">
                 <div className="h-12 w-12 rounded-full bg-primary-100 flex items-center justify-center mb-3">
                   <Users className="h-6 w-6 text-primary-600" />
@@ -114,7 +102,7 @@ const AboutUs = () => {
           <h3 className="text-2xl font-bold text-center text-primary-800 mb-10">Our Leadership</h3>
           
           <div className="flex flex-col md:flex-row justify-center items-center md:items-start space-y-8 md:space-y-0 md:space-x-12">
-            <div className="glass-card p-6 max-w-sm">
+            <div className="glass-card p-6 max-w-sm h-full">
               <div className="relative w-48 h-48 mx-auto mb-6 overflow-hidden rounded-full">
                 <div className="absolute inset-0 bg-gradient-to-b from-primary-300/60 to-primary-600/60"></div>
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -152,8 +140,8 @@ const AboutUs = () => {
               </div>
             </div>
             
-            <div className="max-w-md">
-              <div className="glass-card p-6">
+            <div className="max-w-md h-full">
+              <div className="glass-card p-6 h-full">
                 <h4 className="text-xl font-bold text-primary-800 mb-4">Why Our Team Excels</h4>
                 <ul className="space-y-4">
                   <li className="flex items-start">

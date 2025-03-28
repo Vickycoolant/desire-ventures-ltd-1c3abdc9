@@ -76,8 +76,8 @@ const Index = () => {
       <WhatsAppButton />
       
       {/* Add necessary CSS for flip cards */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
+      <style>
+        {`
         .perspective {
           perspective: 1000px;
         }
@@ -101,8 +101,8 @@ const Index = () => {
         .animate-dropIn {
           animation: dropIn 0.3s ease-in-out;
         }
-        `
-      }} />
+        `}
+      </style>
     </div>
   );
 };

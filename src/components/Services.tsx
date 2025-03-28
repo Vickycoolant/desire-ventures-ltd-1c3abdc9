@@ -1,6 +1,6 @@
 
 import { useEffect, useRef } from 'react';
-import { Truck, Droplet, RefreshCw, ShieldCheck } from 'lucide-react';
+import { Truck, Brush, ShieldCheck } from 'lucide-react';
 
 const serviceData = [
   {
@@ -13,7 +13,7 @@ const serviceData = [
   },
   {
     id: 2,
-    icon: <RefreshCw className="h-12 w-12 text-primary-600" />,
+    icon: <Brush className="h-12 w-12 text-primary-600" />,
     title: "Tank & Reservoir Cleaning",
     description: "Professional cleaning and sanitization of water tanks and reservoirs with eco-friendly solutions, maintaining the highest standards of water hygiene.",
     imageSrc: "/lovable-uploads/1ababbbf-0b19-4a3b-a24c-5b9f095c933f.png",
@@ -24,7 +24,7 @@ const serviceData = [
     icon: <ShieldCheck className="h-12 w-12 text-primary-600" />,
     title: "Exhauster Services",
     description: "Complete waste management solutions with state-of-the-art exhauster services, ensuring clean environments and preventing water contamination.",
-    imageSrc: "/lovable-uploads/dd5ddae1-8ee1-4cfe-bd17-64ad6e010f33.png",
+    imageSrc: "/lovable-uploads/f1ebfc0b-2c9c-4fbc-9579-60407221e0b7.png",
     delay: 3
   }
 ];
@@ -73,11 +73,11 @@ const Services = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+        <div className="flex flex-col md:flex-row gap-8 lg:gap-12">
           {serviceData.map((service) => (
             <div 
               key={service.id} 
-              className={`glass-card p-6 flex flex-col h-full transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 reveal reveal-delay-${service.delay}`}
+              className={`glass-card p-6 flex flex-col h-full transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 reveal reveal-delay-${service.delay} flex-1`}
             >
               <div className="flex-shrink-0 mb-6 flex justify-center">
                 {service.icon}
@@ -95,15 +95,17 @@ const Services = () => {
               <h3 className="text-xl font-bold mb-3 text-primary-800">{service.title}</h3>
               <p className="text-gray-600 flex-grow">{service.description}</p>
               
-              <button 
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              <a 
+                href="https://wa.me/254706274350?text=Hello%20Desire%20Ventures!%20I'm%20interested%20in%20your%20services." 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-6 text-primary-600 font-medium hover:text-primary-800 transition-colors flex items-center justify-center"
               >
                 Request Service
                 <svg className="ml-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                 </svg>
-              </button>
+              </a>
             </div>
           ))}
         </div>
@@ -111,13 +113,13 @@ const Services = () => {
         <div className="mt-16 text-center reveal reveal-delay-4">
           <div className="inline-block p-6 glass-card bg-primary-50">
             <h3 className="text-2xl font-bold text-primary-800 mb-4">Why Choose Our Services?</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
               <div className="flex flex-col items-center">
                 <div className="h-14 w-14 rounded-full bg-primary-100 flex items-center justify-center mb-3">
                   <Droplet className="h-7 w-7 text-primary-600" />
                 </div>
                 <h4 className="font-semibold text-gray-900">High Quality</h4>
-                <p className="text-sm text-gray-600 mt-2">Premium purified water for all your needs</p>
+                <p className="text-sm text-gray-600 mt-2 hidden md:block">Premium purified water for all your needs</p>
               </div>
               <div className="flex flex-col items-center">
                 <div className="h-14 w-14 rounded-full bg-primary-100 flex items-center justify-center mb-3">
@@ -126,7 +128,7 @@ const Services = () => {
                   </svg>
                 </div>
                 <h4 className="font-semibold text-gray-900">Fast Delivery</h4>
-                <p className="text-sm text-gray-600 mt-2">Guaranteed prompt delivery within hours</p>
+                <p className="text-sm text-gray-600 mt-2 hidden md:block">Guaranteed prompt delivery within hours</p>
               </div>
               <div className="flex flex-col items-center">
                 <div className="h-14 w-14 rounded-full bg-primary-100 flex items-center justify-center mb-3">
@@ -135,7 +137,7 @@ const Services = () => {
                   </svg>
                 </div>
                 <h4 className="font-semibold text-gray-900">Reliable & Safe</h4>
-                <p className="text-sm text-gray-600 mt-2">Rigorously tested for safety and purity</p>
+                <p className="text-sm text-gray-600 mt-2 hidden md:block">Rigorously tested for safety and purity</p>
               </div>
               <div className="flex flex-col items-center">
                 <div className="h-14 w-14 rounded-full bg-primary-100 flex items-center justify-center mb-3">
@@ -144,7 +146,7 @@ const Services = () => {
                   </svg>
                 </div>
                 <h4 className="font-semibold text-gray-900">24/7 Support</h4>
-                <p className="text-sm text-gray-600 mt-2">Always available to assist with your needs</p>
+                <p className="text-sm text-gray-600 mt-2 hidden md:block">Always available to assist with your needs</p>
               </div>
             </div>
           </div>
