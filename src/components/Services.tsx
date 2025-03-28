@@ -1,6 +1,6 @@
 
 import { useEffect, useRef } from 'react';
-import { Truck, Brush, ShieldCheck } from 'lucide-react';
+import { Truck, Brush, ShieldCheck, Droplet } from 'lucide-react';
 
 const serviceData = [
   {
