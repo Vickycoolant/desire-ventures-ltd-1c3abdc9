@@ -1,4 +1,3 @@
-
 import { ChevronRight } from 'lucide-react';
 
 const Footer = () => {
@@ -134,10 +133,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#clients" className="text-white/80 hover:text-white transition-colors flex items-center">
-                  <ChevronRight size={16} className="mr-2" />
-                  Testimonials
-                </a>
+                <a href="#clients" className="hover:text-primary-500 transition-colors">Testimonials</a>
               </li>
               <li>
                 <a href="#contact" className="text-white/80 hover:text-white transition-colors flex items-center">

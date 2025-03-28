@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -113,6 +112,21 @@
   
   .water-bg::before {
     @apply content-[''] absolute inset-0 bg-water-pattern opacity-30;
+  }
+  
+  .hover-flip:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+  }
+
+  .flip-card-back {
+    transform: rotateY(180deg);
   }
 }
 
