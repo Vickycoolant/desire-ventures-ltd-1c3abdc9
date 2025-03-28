@@ -42,6 +42,8 @@ const clients = [
 ];
 
 const Clients = () => {
+  // Remove the activeCardId state since we'll use CSS hover instead
+  
   useEffect(() => {
     const revealElements = document.querySelectorAll('.reveal');
     

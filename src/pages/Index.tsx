@@ -87,12 +87,6 @@ const Index = () => {
         .backface-hidden {
           backface-visibility: hidden;
         }
-        .hover-flip:hover .flip-card-inner {
-          transform: rotateY(180deg);
-        }
-        .flip-card-back {
-          transform: rotateY(180deg);
-        }
         @keyframes fadeIn {
           from { opacity: 0; }
           to { opacity: 1; }
