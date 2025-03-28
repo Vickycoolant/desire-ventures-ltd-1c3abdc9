@@ -34,8 +34,8 @@ const Hero = () => {
       <div className="absolute inset-0 bg-primary-900/30 z-10"></div>
       
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-20 text-center">
-        <div className={`transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0 translate-y-10'}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-20 flex flex-col md:flex-row items-center">
+        <div className={`md:w-3/5 text-left transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0 translate-y-10'}`}>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             <span className="block reveal reveal-delay-1">Reliable Bulk Water Delivery</span>
             <span className="block text-primary-200 reveal reveal-delay-2">When You Need It, Where You Need It!</span>
@@ -45,7 +45,7 @@ const Hero = () => {
             The Fastest Clean Water Deliveries in Nairobi!
           </p>
           
-          <div className="flex flex-col sm:flex-row justify-center gap-4 reveal reveal-delay-4 mb-16 md:mb-0">
+          <div className="flex flex-col sm:flex-row justify-start gap-4 reveal reveal-delay-4 mb-16 md:mb-0">
             <a 
               href="https://wa.me/254706274350?text=Hello%20Desire%20Ventures!%20I'm%20interested%20in%20your%20services." 
               target="_blank"
@@ -60,6 +60,38 @@ const Hero = () => {
             >
               Explore Services
             </button>
+          </div>
+        </div>
+        
+        <div className={`md:w-2/5 mt-12 md:mt-0 transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0 translate-x-10'}`}>
+          <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 shadow-xl">
+            <h2 className="text-2xl font-bold text-white mb-4 reveal reveal-delay-2">Water When You Need It</h2>
+            <ul className="space-y-4">
+              <li className="flex items-center text-white/90 reveal reveal-delay-3">
+                <div className="bg-primary-600/50 rounded-full p-1 mr-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                Fast delivery within Nairobi
+              </li>
+              <li className="flex items-center text-white/90 reveal reveal-delay-4">
+                <div className="bg-primary-600/50 rounded-full p-1 mr-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                Clean & safe drinking water
+              </li>
+              <li className="flex items-center text-white/90 reveal reveal-delay-5">
+                <div className="bg-primary-600/50 rounded-full p-1 mr-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                24/7 emergency services
+              </li>
+            </ul>
           </div>
         </div>
         

@@ -1,6 +1,5 @@
-
 import { useEffect } from 'react';
-import { Shield, Droplet, Clock, Users } from 'lucide-react';
+import { Shield, Droplet, Clock, Users, ArrowRight } from 'lucide-react';
 
 const AboutUs = () => {
   useEffect(() => {

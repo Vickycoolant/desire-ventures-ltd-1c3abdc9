@@ -164,6 +164,27 @@
   }
 }
 
+/* Card flip animations */
+.perspective {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.hover\:rotate-y-180:hover {
+  transform: rotateY(180deg);
+}
+
 /* Custom scroll bar */
 ::-webkit-scrollbar {
   width: 10px;
@@ -181,4 +202,22 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #0284c7;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes dropIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-dropIn {
+  animation: dropIn 0.3s ease-in-out;
 }
