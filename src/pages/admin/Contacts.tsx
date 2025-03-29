@@ -62,7 +62,19 @@ const Contacts = () => {
       const { data, error } = await query;
       
       if (error) throw error;
-      setContacts(data || []);
+      
+      // Transform the data to match our Contact interface by providing default values
+      const typedContacts: Contact[] = data?.map(contact => ({
+        id: contact.id,
+        name: contact.name || '',
+        email: contact.email || '',
+        phone: contact.phone || '',
+        service: contact.service || '',
+        message: contact.message || '',
+        created_at: contact.created_at
+      })) || [];
+      
+      setContacts(typedContacts);
     } catch (error) {
       console.error("Error fetching contacts:", error);
       toast({

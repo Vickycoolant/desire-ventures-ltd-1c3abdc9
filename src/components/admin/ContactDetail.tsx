@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
@@ -13,7 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Send, Phone, Mail } from "lucide-react";
+import { Send, Phone, Mail, User } from "lucide-react";
 
 interface Contact {
   id: string;

@@ -51,14 +51,16 @@ const Dashboard = () => {
           .select("*", { count: "exact", head: true });
           
         // Get service distribution for pie chart
-        const { data: services } = await supabase
+        const { data: servicesData } = await supabase
           .from("contacts")
-          .select("service")
-          .not("service", "is", null);
+          .select("service");
+          
+        // Handle the case where service might be null in some rows
+        const services = servicesData?.filter(item => item.service !== null) || [];
 
         // Count services
         const serviceCountMap: Record<string, number> = {};
-        services?.forEach(item => {
+        services.forEach(item => {
           const service = item.service || "Other";
           serviceCountMap[service] = (serviceCountMap[service] || 0) + 1;
         });
@@ -73,16 +75,25 @@ const Dashboard = () => {
         });
 
         // Get 5 recent contacts
-        const { data: recentContactsData } = await supabase
+        const { data: recentContactsRaw } = await supabase
           .from("contacts")
           .select("*")
           .order("created_at", { ascending: false })
           .limit(5);
+          
+        // Transform the data to match our Contact interface  
+        const recentContactsData: Contact[] = recentContactsRaw?.map(contact => ({
+          id: contact.id,
+          name: contact.name || '',
+          email: contact.email || '',
+          service: contact.service || '',
+          created_at: contact.created_at
+        })) || [];
 
         setContactsCount(contactsCount || 0);
         setEmailsSent(emailsCount || 0);
         setServiceData(serviceChartData || []);
-        setRecentContacts(recentContactsData || []);
+        setRecentContacts(recentContactsData);
       } catch (error) {
         console.error("Error fetching dashboard data:", error);
       } finally {
