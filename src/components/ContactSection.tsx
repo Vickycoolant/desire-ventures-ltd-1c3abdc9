@@ -48,12 +48,13 @@ const ContactSection = () => {
   
   const saveContactToDatabase = async () => {
     try {
+      // Make sure to include all fields including phone and service
       const { data, error } = await supabase.from('contacts').insert([
         { 
           name, 
           email, 
-          phone, 
-          service, 
+          phone, // Now this will be saved correctly
+          service, // Now this will be saved correctly
           message 
         }
       ]).select();

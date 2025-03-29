@@ -16,6 +16,7 @@ interface Contact {
   id: string;
   name: string;
   email: string;
+  phone: string; // Add phone to match database schema
   service: string;
   created_at: string;
 }
@@ -86,6 +87,7 @@ const Dashboard = () => {
           id: contact.id,
           name: contact.name || '',
           email: contact.email || '',
+          phone: contact.phone || '', // Add phone field with default
           service: contact.service || '',
           created_at: contact.created_at
         })) || [];
