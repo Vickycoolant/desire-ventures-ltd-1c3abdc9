@@ -48,19 +48,25 @@ const ContactSection = () => {
   
   const saveContactToDatabase = async () => {
     try {
-      // Make sure to include all fields including phone and service
-      const { data, error } = await supabase.from('contacts').insert([
-        { 
-          name, 
-          email, 
-          phone, // Now this will be saved correctly
-          service, // Now this will be saved correctly
-          message 
-        }
-      ]).select();
+      // Using upsert with onConflict to ensure we're not violating any constraints
+      const { data, error } = await supabase
+        .from('contacts')
+        .upsert([
+          { 
+            name, 
+            email, 
+            phone,
+            service,
+            message 
+          }
+        ], {
+          onConflict: 'email',
+          ignoreDuplicates: false
+        })
+        .select();
       
       if (error) throw error;
-      return data[0];
+      return data ? data[0] : null;
     } catch (error) {
       console.error("Error saving contact:", error);
       throw error;

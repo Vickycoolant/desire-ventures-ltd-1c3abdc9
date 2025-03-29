@@ -9,6 +9,7 @@ import Clients from '../components/Clients';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
+import { Toaster } from '@/components/ui/toaster';
 
 const Index = () => {
   useEffect(() => {
@@ -74,6 +75,9 @@ const Index = () => {
       
       {/* WhatsApp floating button */}
       <WhatsAppButton />
+      
+      {/* Add Toaster component for notifications */}
+      <Toaster />
       
       {/* Add necessary CSS for flip cards */}
       <style>
