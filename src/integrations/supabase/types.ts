@@ -9,7 +9,113 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      contacts: {
+        Row: {
+          created_at: string
+          email: string | null
+          id: string
+          message: string | null
+          name: string | null
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          message?: string | null
+          name?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          message?: string | null
+          name?: string | null
+        }
+        Relationships: []
+      }
+      newsletter_subscribers: {
+        Row: {
+          email: string
+          id: string
+          is_active: boolean | null
+          name: string | null
+          subscribed_at: string
+        }
+        Insert: {
+          email: string
+          id?: string
+          is_active?: boolean | null
+          name?: string | null
+          subscribed_at?: string
+        }
+        Update: {
+          email?: string
+          id?: string
+          is_active?: boolean | null
+          name?: string | null
+          subscribed_at?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          full_name: string | null
+          id: string
+          is_admin: boolean | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          full_name?: string | null
+          id: string
+          is_admin?: boolean | null
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          is_admin?: boolean | null
+        }
+        Relationships: []
+      }
+      sent_emails: {
+        Row: {
+          body: string
+          contact_id: string
+          id: string
+          sent_at: string
+          sent_by: string
+          subject: string
+        }
+        Insert: {
+          body: string
+          contact_id: string
+          id?: string
+          sent_at?: string
+          sent_by: string
+          subject: string
+        }
+        Update: {
+          body?: string
+          contact_id?: string
+          id?: string
+          sent_at?: string
+          sent_by?: string
+          subject?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sent_emails_contact_id_fkey"
+            columns: ["contact_id"]
+            isOneToOne: false
+            referencedRelation: "contacts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never

@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Phone, Mail, MapPin, Linkedin, Clock } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 const ContactSection = () => {
   const [name, setName] = useState('');
@@ -15,38 +16,16 @@ const ContactSection = () => {
   
   const sendAutomatedReply = async (recipientEmail: string, recipientName: string, selectedService: string) => {
     try {
-      const subject = "Thank you for contacting Desire Ventures Limited";
-      const body = `Dear ${recipientName},
-
-Thank you for reaching out to Desire Ventures Limited. We have received your request for ${selectedService}, and our team will get back to you shortly to confirm the details.
-
-Best regards,
-Desire Ventures Team`;
+      // Call Supabase Edge function to send confirmation email
+      const { error } = await supabase.functions.invoke('send-confirmation', {
+        body: {
+          name: recipientName,
+          email: recipientEmail,
+          service: selectedService
+        }
+      });
       
-      // In a real-world scenario, this would be a call to your backend API
-      // For this demo, we'll show how this would be structured, but will use
-      // the mailto: link as a fallback
-      
-      // Simulating API call to send automated email
-      console.log("Sending automated email to:", recipientEmail);
-      console.log("Email subject:", subject);
-      console.log("Email body:", body);
-      
-      // In production, replace this with actual API call
-      // Example: 
-      // const response = await fetch('/api/send-email', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ to: recipientEmail, subject, body }),
-      // });
-      
-      // Instead, we'll create a hidden mailto link that would be clicked in real backend implementation
-      // This is just for demonstration purposes
-      const mailtoLink = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      
-      // In a real implementation, we wouldn't open this link, but use a server-side email service
-      // For this demo, you can uncomment this to see it in action (but it will open email client)
-      // window.open(mailtoLink, '_blank');
+      if (error) throw error;
       
       toast({
         title: "Automated reply sent",
@@ -57,7 +36,33 @@ Desire Ventures Team`;
       return true;
     } catch (error) {
       console.error("Error sending automated reply:", error);
+      toast({
+        variant: "destructive",
+        title: "Email Error",
+        description: "There was a problem sending the confirmation email.",
+        duration: 5000,
+      });
       return false;
+    }
+  };
+  
+  const saveContactToDatabase = async () => {
+    try {
+      const { data, error } = await supabase.from('contacts').insert([
+        { 
+          name, 
+          email, 
+          phone, 
+          service, 
+          message 
+        }
+      ]).select();
+      
+      if (error) throw error;
+      return data[0];
+    } catch (error) {
+      console.error("Error saving contact:", error);
+      throw error;
     }
   };
   
@@ -65,41 +70,59 @@ Desire Ventures Team`;
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Format the service name for display
-    const formattedService = service === 'water-delivery' ? 'Water Delivery' :
-                            service === 'tank-cleaning' ? 'Tank/Reservoir Cleaning' :
-                            service === 'exhauster' ? 'Exhauster Services' : 
-                            'Other Services';
-    
-    const subject = `New Service Request: ${formattedService}`;
-    const body = `
+    try {
+      // Save contact to database
+      await saveContactToDatabase();
+      
+      // Send automated reply
+      await sendAutomatedReply(email, name, service);
+      
+      // Format the service name for display
+      const formattedService = service === 'water-delivery' ? 'Water Delivery' :
+                              service === 'tank-cleaning' ? 'Tank/Reservoir Cleaning' :
+                              service === 'exhauster' ? 'Exhauster Services' : 
+                              'Other Services';
+      
+      const subject = `New Service Request: ${formattedService}`;
+      const body = `
 Name: ${name}
 Email: ${email}
 Phone: ${phone}
 Service: ${formattedService}
 Message: ${message}
-    `;
-    
-    const mailtoLink = `mailto:desireventuresltd@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-    window.open(mailtoLink, '_blank');
-    
-    // Send automated reply to the customer
-    await sendAutomatedReply(email, name, formattedService);
-    
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
+      `;
+      
+      // Open email client as fallback for admins
+      const mailtoLink = `mailto:desireventuresltd@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.open(mailtoLink, '_blank');
+      
+      toast({
+        title: "Message sent",
+        description: "Thank you for your message. We will be in touch soon.",
+        duration: 5000,
+      });
+      
       setName('');
       setEmail('');
       setPhone('');
       setMessage('');
       setService('');
+      setIsSubmitted(true);
       
       setTimeout(() => {
         setIsSubmitted(false);
       }, 5000);
-    }, 1500);
+    } catch (error) {
+      console.error("Form submission error:", error);
+      toast({
+        variant: "destructive",
+        title: "Submission Error",
+        description: "There was a problem sending your message. Please try again.",
+        duration: 5000,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   
   useEffect(() => {
