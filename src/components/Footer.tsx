@@ -1,3 +1,4 @@
+
 import { Facebook, Twitter, Instagram, Mail, MapPin, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -9,11 +10,11 @@ const Footer = () => {
           {/* Company Info */}
           <div className="md:col-span-4">
             <div className="flex items-center space-x-2 mb-6">
-              <div className="h-10 w-10 overflow-hidden rounded-[10px] bg-white flex items-center justify-center">
+              <div className="h-12 w-12 overflow-hidden rounded-[10px] bg-primary-600 flex items-center justify-center">
                 <img 
                   src="/lovable-uploads/6ad8953c-3442-4961-b239-f84d3d161a46.png" 
                   alt="Desire Ventures Logo" 
-                  className="h-auto w-auto max-h-8 max-w-8 object-contain"
+                  className="h-11 w-11 max-h-11 max-w-11 object-contain"
                 />
               </div>
               <span className="text-xl font-bold">Desire Ventures Ltd.</span>

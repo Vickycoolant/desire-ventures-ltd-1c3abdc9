@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { z } from "zod";
@@ -42,11 +43,11 @@ const Auth = () => {
     <div className="min-h-screen bg-gradient-to-b from-sky-100 to-blue-50 flex items-center justify-center p-4">
       <Card className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="h-16 w-16 bg-white rounded-xl shadow-md mx-auto mb-4 p-2">
+          <div className="h-20 w-20 bg-primary-600 rounded-xl shadow-md mx-auto mb-4 p-2">
             <img 
               src="/lovable-uploads/6ad8953c-3442-4961-b239-f84d3d161a46.png" 
               alt="Desire Ventures Logo" 
-              className="h-auto w-auto max-h-12 max-w-12 object-contain"
+              className="h-16 w-16 max-h-16 max-w-16 object-contain"
             />
           </div>
           <h2 className="text-2xl font-bold text-gray-800">

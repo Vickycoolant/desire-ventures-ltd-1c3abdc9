@@ -27,11 +27,11 @@ const Sidebar = () => {
       <div className={`p-4 border-b flex items-center ${collapsed ? 'justify-center' : 'justify-between'}`}>
         {!collapsed && (
           <div className="flex items-center space-x-2">
-            <div className="h-8 w-8 overflow-hidden rounded-md bg-white flex items-center justify-center flex-shrink-0">
+            <div className="h-10 w-10 overflow-hidden rounded-md bg-primary-600 flex items-center justify-center flex-shrink-0">
               <img 
                 src="/lovable-uploads/6ad8953c-3442-4961-b239-f84d3d161a46.png" 
                 alt="Desire Ventures Logo" 
-                className="h-auto w-auto max-h-7 max-w-7 object-contain"
+                className="h-9 w-9 max-h-9 max-w-9 object-contain"
               />
             </div>
             <span className="font-semibold text-gray-900">Admin</span>
