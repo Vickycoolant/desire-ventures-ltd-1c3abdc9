@@ -1,6 +1,7 @@
 
 import { useEffect, useRef } from 'react';
 import { Truck, Brush, ShieldCheck, Droplet } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const serviceData = [
   {
@@ -95,17 +96,23 @@ const Services = () => {
               <h3 className="text-xl font-bold mb-3 text-primary-800">{service.title}</h3>
               <p className="text-gray-600 flex-grow">{service.description}</p>
               
-              <a 
-                href="https://wa.me/254706274350?text=Hello%20Desire%20Ventures!%20I'm%20interested%20in%20your%20services." 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 text-primary-600 font-medium hover:text-primary-800 transition-colors flex items-center justify-center"
+              <Button 
+                variant="default"
+                size="default"
+                className="mt-6 hover:scale-105 transition-transform"
+                asChild
               >
-                Request Service
-                <svg className="ml-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                </svg>
-              </a>
+                <a 
+                  href="https://wa.me/254706274350?text=Hello%20Desire%20Ventures!%20I'm%20interested%20in%20your%20services." 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Request Service
+                  <svg className="ml-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                  </svg>
+                </a>
+              </Button>
             </div>
           ))}
         </div>
