@@ -49,7 +49,7 @@ const Auth = () => {
         <div className="text-center mb-8">
           <div className="h-16 w-16 bg-white rounded-xl shadow-md mx-auto mb-4 p-2">
             <img 
-              src="/lovable-uploads/2ab55cc8-3c4c-4e7a-9716-af191f2e6fad.png" 
+              src="/lovable-uploads/6ad8953c-3442-4961-b239-f84d3d161a46.png" 
               alt="Desire Ventures Logo" 
               className="h-full w-full object-contain"
             />
