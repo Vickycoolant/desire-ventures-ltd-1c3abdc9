@@ -31,7 +31,7 @@ const Sidebar = () => {
               <img 
                 src="/lovable-uploads/6ad8953c-3442-4961-b239-f84d3d161a46.png" 
                 alt="Desire Ventures Logo" 
-                className="h-full w-full object-cover"
+                className="h-auto w-auto max-h-7 max-w-7 object-contain"
               />
             </div>
             <span className="font-semibold text-gray-900">Admin</span>
