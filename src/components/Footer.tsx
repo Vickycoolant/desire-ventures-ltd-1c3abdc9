@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="md:col-span-4">
             <div className="flex items-center space-x-2 mb-6">
-              <div className="h-12 w-12 overflow-hidden rounded-[10px] bg-primary-600 flex items-center justify-center">
+              <div className="h-12 w-12 overflow-hidden rounded-[10px] bg-transparent flex items-center justify-center">
                 <img 
                   src="/lovable-uploads/6ad8953c-3442-4961-b239-f84d3d161a46.png" 
                   alt="Desire Ventures Logo" 
