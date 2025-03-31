@@ -54,11 +54,11 @@ const NewsletterSignup = () => {
   };
   
   return (
-    <div className="glass-card p-4 sm:p-5 rounded-xl shadow-lg">
-      <h3 className="text-lg sm:text-xl font-bold text-primary-800 mb-2">Subscribe to Our Newsletter</h3>
-      <p className="text-sm text-gray-600 mb-3 max-w-[90%]">Stay updated with our latest promotions and services.</p>
+    <div className="glass-card p-3 sm:p-4 rounded-xl shadow-lg w-[90%]">
+      <h3 className="text-base sm:text-lg font-bold text-primary-800 mb-2">Subscribe to Our Newsletter</h3>
+      <p className="text-xs text-gray-600 mb-2 max-w-[90%]">Stay updated with our latest promotions and services.</p>
       
-      <form onSubmit={handleSubmit} className="space-y-3">
+      <form onSubmit={handleSubmit} className="space-y-2">
         <div>
           <label htmlFor="name" className="block text-xs font-medium text-gray-700 mb-1">Name (Optional)</label>
           <Input
@@ -83,12 +83,12 @@ const NewsletterSignup = () => {
         </div>
         <Button 
           type="submit" 
-          className="w-full bg-primary-600 hover:bg-primary-700 text-sm py-1.5"
+          className="w-full bg-primary-600 hover:bg-primary-700 text-xs py-1"
           disabled={submitting}
         >
           {submitting ? (
             <div className="flex items-center justify-center">
-              <svg className="animate-spin -ml-1 mr-3 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <svg className="animate-spin -ml-1 mr-2 h-3 w-3 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
