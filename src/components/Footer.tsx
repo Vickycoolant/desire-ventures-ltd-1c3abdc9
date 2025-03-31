@@ -1,7 +1,6 @@
 
 import { Facebook, Twitter, Instagram, Mail, MapPin, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import NewsletterSignup from './NewsletterSignup';
 
 const Footer = () => {
   return (
@@ -11,7 +10,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="md:col-span-4">
             <div className="flex items-center space-x-2 mb-6">
-              <div className="h-[13.2rem] w-[13.2rem] overflow-hidden rounded-[10px] bg-transparent flex items-center justify-center">
+              <div className="h-12 w-12 overflow-hidden rounded-[10px] bg-transparent flex items-center justify-center">
                 <img 
                   src="/lovable-uploads/6ad8953c-3442-4961-b239-f84d3d161a46.png" 
                   alt="Desire Ventures Logo" 
@@ -96,7 +95,19 @@ const Footer = () => {
           {/* Newsletter */}
           <div className="md:col-span-3">
             <h4 className="text-lg font-semibold mb-4">Newsletter</h4>
-            <NewsletterSignup />
+            <p className="text-gray-300 mb-4">
+              Subscribe to our newsletter to receive updates and exclusive offers.
+            </p>
+            <div className="flex">
+              <input
+                type="email"
+                placeholder="Your email"
+                className="bg-primary-800 border border-primary-700 rounded-l-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-200"
+              />
+              <button className="bg-primary-600 hover:bg-primary-500 py-2 px-4 rounded-r-md focus:outline-none focus:ring-2 focus:ring-primary-400 transition-colors">
+                Subscribe
+              </button>
+            </div>
           </div>
         </div>
         
