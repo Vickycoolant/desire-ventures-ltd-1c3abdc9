@@ -1,5 +1,5 @@
 
-import { Facebook, Twitter, Instagram, Mail, MapPin, Phone } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Mail, MapPin, Phone, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -24,32 +24,15 @@ const Footer = () => {
               Desire Ventures Ltd. is a leading provider of innovative solutions, committed to excellence and client satisfaction.
             </p>
             
-            {/* Contact Info */}
-            <div className="space-y-2">
-              <div className="flex items-center space-x-2 text-gray-300">
-                <MapPin className="h-5 w-5" />
-                <span>Lavington Green Mall, Off James Gichuru road, Nairobi</span>
-              </div>
-              <div className="flex items-center space-x-2 text-gray-300">
-                <Mail className="h-5 w-5" />
-                <span>desireventuresltd@gmail.com</span>
-              </div>
-              <div className="flex items-center space-x-2 text-gray-300">
-                <Phone className="h-5 w-5" />
-                <span>(+254) 0727023350</span>
-              </div>
-            </div>
-            
             {/* Social Links */}
             <div className="flex space-x-4 mt-4">
-              <a href="#" className="hover:text-primary-500 transition-colors">
-                <Facebook className="h-6 w-6" />
-              </a>
-              <a href="#" className="hover:text-primary-500 transition-colors">
-                <Twitter className="h-6 w-6" />
-              </a>
-              <a href="#" className="hover:text-primary-500 transition-colors">
-                <Instagram className="h-6 w-6" />
+              <a 
+                href="https://www.linkedin.com/in/desire-ventures-ltd-986465354" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:text-primary-500 transition-colors"
+              >
+                <Linkedin className="h-6 w-6" />
               </a>
             </div>
           </div>
@@ -78,42 +61,51 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Our Services</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="hover:text-primary-500 transition-colors">Consulting</a>
+                <a href="#" className="hover:text-primary-500 transition-colors">Water Delivery</a>
               </li>
               <li>
-                <a href="#" className="hover:text-primary-500 transition-colors">Strategy</a>
+                <a href="#" className="hover:text-primary-500 transition-colors">Exhauster Services</a>
               </li>
               <li>
-                <a href="#" className="hover:text-primary-500 transition-colors">Development</a>
+                <a href="#" className="hover:text-primary-500 transition-colors">Tank Cleaning</a>
               </li>
               <li>
-                <a href="#" className="hover:text-primary-500 transition-colors">Support</a>
+                <a href="#" className="hover:text-primary-500 transition-colors">Pool Cleaning</a>
               </li>
             </ul>
           </div>
           
-          {/* Newsletter */}
+          {/* Contacts */}
           <div className="md:col-span-3">
-            <h4 className="text-lg font-semibold mb-4">Newsletter</h4>
-            <p className="text-gray-300 mb-4">
-              Subscribe to our newsletter to receive updates and exclusive offers.
-            </p>
-            <div className="flex">
-              <input
-                type="email"
-                placeholder="Your email"
-                className="bg-primary-800 border border-primary-700 rounded-l-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-200"
-              />
-              <button className="bg-primary-600 hover:bg-primary-500 py-2 px-4 rounded-r-md focus:outline-none focus:ring-2 focus:ring-primary-400 transition-colors">
-                Subscribe
-              </button>
+            <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
+            <div className="space-y-2">
+              <div className="flex items-center space-x-2 text-gray-300">
+                <MapPin className="h-5 w-5" />
+                <span>Lavington Green Mall, Off James Gichuru road, Nairobi</span>
+              </div>
+              <div className="flex items-center space-x-2 text-gray-300">
+                <Mail className="h-5 w-5" />
+                <span>desireventuresltd@gmail.com</span>
+              </div>
+              <div className="flex items-center space-x-2 text-gray-300">
+                <Phone className="h-5 w-5" />
+                <span>(+254) 0727023350</span>
+              </div>
+              <div className="flex items-center space-x-2 text-gray-300 mt-1">
+                <Phone className="h-5 w-5" />
+                <span>(WhatsApp): (+254) 0706274350</span>
+              </div>
             </div>
           </div>
         </div>
         
         {/* Copyright */}
         <div className="border-t border-primary-700 pt-6 mt-8 text-center text-gray-400">
-          &copy; {new Date().getFullYear()} Desire Ventures Ltd. All rights reserved.
+          <div className="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0">
+            <span>&copy; {new Date().getFullYear()} Desire Ventures Ltd. All rights reserved.</span>
+            <span className="hidden sm:inline mx-2">|</span>
+            <span>Director: John Doe</span>
+          </div>
         </div>
       </div>
     </footer>
