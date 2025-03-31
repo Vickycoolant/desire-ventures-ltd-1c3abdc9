@@ -28,15 +28,15 @@ const Footer = () => {
             <div className="space-y-2">
               <div className="flex items-center space-x-2 text-gray-300">
                 <MapPin className="h-5 w-5" />
-                <span>123 Main Street, Nairobi</span>
+                <span>Lavington Green Mall, Off James Gichuru road, Nairobi</span>
               </div>
               <div className="flex items-center space-x-2 text-gray-300">
                 <Mail className="h-5 w-5" />
-                <span>info@desireventures.com</span>
+                <span>desireventuresltd@gmail.com</span>
               </div>
               <div className="flex items-center space-x-2 text-gray-300">
                 <Phone className="h-5 w-5" />
-                <span>+254 700 000 000</span>
+                <span>(+254) 0727023350</span>
               </div>
             </div>
             
