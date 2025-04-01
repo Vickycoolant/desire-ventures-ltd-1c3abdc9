@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
@@ -82,8 +83,8 @@ const Navbar = () => {
               className="h-10 w-10 max-h-10 max-w-10 object-contain"
             />
           </div>
-          <h1 className="text-xl font-bold text-white truncate max-w-[180px] md:max-w-none">
-            Desire Ventures
+          <h1 className="text-lg sm:text-xl font-bold text-white truncate max-w-[180px] md:max-w-none">
+            Desire Ventures Ltd.
           </h1>
         </div>
         
@@ -156,13 +157,13 @@ const Navbar = () => {
       {isMenuOpen && (
         <div 
           id="mobile-menu"
-          className="md:hidden fixed top-16 left-0 w-full h-[calc(100vh-4rem)] bg-primary-800/98 backdrop-blur-md z-40 overflow-y-auto transition-all transform duration-300 ease-in-out animate-in fade-in slide-in-from-top"
+          className="md:hidden fixed top-16 left-0 w-full h-[calc(100vh-4rem)] bg-primary-700/98 backdrop-blur-md z-40 overflow-y-auto transition-all transform duration-300 ease-in-out animate-in fade-in slide-in-from-top"
         >
           <div className="flex flex-col p-6 space-y-6">
             <button 
               onClick={() => scrollToSection('home')}
               className={`p-3 text-left rounded-md text-lg font-medium ${
-                activeSection === 'home' ? 'bg-primary-700/80 text-white' : 'text-white/90 hover:bg-primary-700/50'
+                activeSection === 'home' ? 'bg-primary-600/80 text-white' : 'text-white/90 hover:bg-primary-600/50'
               }`}
             >
               Home
@@ -170,7 +171,7 @@ const Navbar = () => {
             <button 
               onClick={() => scrollToSection('services')}
               className={`p-3 text-left rounded-md text-lg font-medium ${
-                activeSection === 'services' ? 'bg-primary-700/80 text-white' : 'text-white/90 hover:bg-primary-700/50'
+                activeSection === 'services' ? 'bg-primary-600/80 text-white' : 'text-white/90 hover:bg-primary-600/50'
               }`}
             >
               Services
@@ -178,7 +179,7 @@ const Navbar = () => {
             <button 
               onClick={() => scrollToSection('areas')}
               className={`p-3 text-left rounded-md text-lg font-medium ${
-                activeSection === 'areas' ? 'bg-primary-700/80 text-white' : 'text-white/90 hover:bg-primary-700/50'
+                activeSection === 'areas' ? 'bg-primary-600/80 text-white' : 'text-white/90 hover:bg-primary-600/50'
               }`}
             >
               Service Areas
@@ -186,7 +187,7 @@ const Navbar = () => {
             <button 
               onClick={() => scrollToSection('about')}
               className={`p-3 text-left rounded-md text-lg font-medium ${
-                activeSection === 'about' ? 'bg-primary-700/80 text-white' : 'text-white/90 hover:bg-primary-700/50'
+                activeSection === 'about' ? 'bg-primary-600/80 text-white' : 'text-white/90 hover:bg-primary-600/50'
               }`}
             >
               About Us
@@ -194,7 +195,7 @@ const Navbar = () => {
             <button 
               onClick={() => scrollToSection('clients')}
               className={`p-3 text-left rounded-md text-lg font-medium ${
-                activeSection === 'clients' ? 'bg-primary-700/80 text-white' : 'text-white/90 hover:bg-primary-700/50'
+                activeSection === 'clients' ? 'bg-primary-600/80 text-white' : 'text-white/90 hover:bg-primary-600/50'
               }`}
             >
               Our Clients
