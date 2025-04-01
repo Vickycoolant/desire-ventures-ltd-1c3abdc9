@@ -79,19 +79,44 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Our Services</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/services" className="hover:text-primary-500 transition-colors">Water Delivery</Link>
+                <a onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                }} className="hover:text-primary-500 transition-colors cursor-pointer">
+                  Water Delivery
+                </a>
               </li>
               <li>
-                <Link to="/services" className="hover:text-primary-500 transition-colors">Tank & Reservoir Cleaning</Link>
+                <a onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                }} className="hover:text-primary-500 transition-colors cursor-pointer">
+                  Tank & Reservoir Cleaning
+                </a>
               </li>
               <li>
-                <Link to="/services" className="hover:text-primary-500 transition-colors">Exhauster Services</Link>
+                <a onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                }} className="hover:text-primary-500 transition-colors cursor-pointer">
+                  Exhauster Services
+                </a>
               </li>
               <li>
-                <Link to="/services" className="hover:text-primary-500 transition-colors">Emergency Water Supply</Link>
+                <a onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                }} className="hover:text-primary-500 transition-colors cursor-pointer">
+                  Emergency Water Supply
+                </a>
               </li>
               <li>
-                <Link to="/services" className="hover:text-primary-500 transition-colors">Water Testing & Treatment</Link>
+                <a onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                }} className="hover:text-primary-500 transition-colors cursor-pointer">
+                  Water Testing & Treatment
+                </a>
               </li>
             </ul>
           </div>
@@ -101,22 +126,49 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="hover:text-primary-500 transition-colors">Home</Link>
+                <Link to="/" className="hover:text-primary-500 transition-colors">
+                  Home
+                </Link>
               </li>
               <li>
-                <Link to="/#about" className="hover:text-primary-500 transition-colors">About Us</Link>
+                <a onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                }} className="hover:text-primary-500 transition-colors cursor-pointer">
+                  About Us
+                </a>
               </li>
               <li>
-                <Link to="/#services" className="hover:text-primary-500 transition-colors">Services</Link>
+                <a onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                }} className="hover:text-primary-500 transition-colors cursor-pointer">
+                  Services
+                </a>
               </li>
               <li>
-                <Link to="/#service-areas" className="hover:text-primary-500 transition-colors">Service Areas</Link>
+                <a onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('service-areas')?.scrollIntoView({ behavior: 'smooth' });
+                }} className="hover:text-primary-500 transition-colors cursor-pointer">
+                  Service Areas
+                </a>
               </li>
               <li>
-                <Link to="/#testimonials" className="hover:text-primary-500 transition-colors">Testimonials</Link>
+                <a onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' });
+                }} className="hover:text-primary-500 transition-colors cursor-pointer">
+                  Testimonials
+                </a>
               </li>
               <li>
-                <Link to="/#contact" className="hover:text-primary-500 transition-colors">Contact Us</Link>
+                <a onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }} className="hover:text-primary-500 transition-colors cursor-pointer">
+                  Contact Us
+                </a>
               </li>
             </ul>
           </div>
