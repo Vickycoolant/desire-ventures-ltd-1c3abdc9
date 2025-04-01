@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
@@ -11,13 +10,10 @@ const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
       
-      // Get current scroll position
       const scrollPosition = window.scrollY + 100;
       
-      // Get all sections
       const sections = document.querySelectorAll('section[id]');
       
-      // Loop through sections to find active one
       sections.forEach(section => {
         const sectionTop = (section as HTMLElement).offsetTop;
         const sectionHeight = (section as HTMLElement).offsetHeight;
@@ -37,11 +33,10 @@ const Navbar = () => {
     const section = document.getElementById(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false); // Close mobile menu after clicking
+      setIsMenuOpen(false);
     }
   };
   
-  // Handle clicks outside the mobile menu to close it
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const navElement = document.getElementById('mobile-menu');
@@ -60,7 +55,6 @@ const Navbar = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isMenuOpen]);
   
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -80,20 +74,19 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between w-full">
-        <div className="flex items-center space-x-2">
-          <div className="h-[13.2rem] w-[13.2rem] overflow-hidden rounded-[10px] bg-transparent flex items-center justify-center flex-shrink-0">
+        <div className="flex items-center">
+          <div className="h-12 w-12 overflow-hidden rounded-[10px] bg-transparent flex items-center justify-center flex-shrink-0">
             <img 
               src="/lovable-uploads/6ad8953c-3442-4961-b239-f84d3d161a46.png" 
               alt="Desire Ventures Logo" 
-              className="h-12 w-12 max-h-12 max-w-12 object-contain"
+              className="h-10 w-10 max-h-10 max-w-10 object-contain"
             />
           </div>
-          <h1 className="text-xl font-bold text-white whitespace-nowrap">
-            Desire Ventures Ltd.
+          <h1 className="text-xl font-bold text-white truncate max-w-[180px] md:max-w-none">
+            Desire Ventures
           </h1>
         </div>
         
-        {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
           <button 
             onClick={() => scrollToSection('home')}
@@ -148,19 +141,18 @@ const Navbar = () => {
           </a>
         </div>
         
-        {/* Mobile Menu Button */}
         <button 
           id="menu-button"
-          className="md:hidden text-white p-2 z-50"
+          className="md:hidden text-white p-2 z-50 flex items-center"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMenuOpen}
         >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          <span className="mr-1 text-sm">Menu</span>
+          {isMenuOpen ? <X size={20} /> : <ChevronDown size={20} />}
         </button>
       </div>
       
-      {/* Improved Mobile Menu */}
       {isMenuOpen && (
         <div 
           id="mobile-menu"
@@ -208,7 +200,6 @@ const Navbar = () => {
               Our Clients
             </button>
             
-            {/* Contact button */}
             <a 
               href="https://wa.me/254706274350?text=Hello%20Desire%20Ventures!%20I'm%20interested%20in%20your%20services."
               target="_blank"
