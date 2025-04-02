@@ -30,7 +30,7 @@ const WhatsAppButton = () => {
       )}
       
       <a 
-        href="https://wa.me/254706274350?text=Hello%20Desire%20Ventures!%20I'm%20interested%20in%20your%20services." 
+        href="https://wa.me/254706274350?text=Hello%20Desire%20Ventures%20Ltd%2C%0A%0AI'm%20interested%20in%20your%20services.%20Could%20you%20share%20details%20on%20pricing%20and%20availability%3F" 
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with us on WhatsApp"

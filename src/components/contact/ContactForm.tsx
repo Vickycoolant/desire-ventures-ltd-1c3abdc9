@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/integrations/supabase/client';
@@ -19,7 +18,6 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
   
   const sendAutomatedReply = async (recipientEmail: string, recipientName: string, selectedService: string) => {
     try {
-      // Call Supabase Edge function to send confirmation email
       const { error } = await supabase.functions.invoke('send-confirmation', {
         body: {
           name: recipientName,
@@ -51,7 +49,6 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
   
   const saveContactToDatabase = async () => {
     try {
-      // Using upsert with onConflict to ensure we're not violating any constraints
       const { data, error } = await supabase
         .from('contacts')
         .upsert([
@@ -81,34 +78,33 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
     setIsSubmitting(true);
     
     try {
-      // Save contact to database
       await saveContactToDatabase();
       
-      // Send automated reply
       await sendAutomatedReply(email, name, service);
       
-      // Format the service name for display
       const formattedService = service === 'water-delivery' ? 'Water Delivery' :
                               service === 'tank-cleaning' ? 'Tank/Reservoir Cleaning' :
                               service === 'exhauster' ? 'Exhauster Services' : 
                               'Other Services';
       
-      const subject = `New Service Request: ${formattedService}`;
-      const body = `
-Name: ${name}
-Email: ${email}
-Phone: ${phone}
-Service: ${formattedService}
-Message: ${message}
-      `;
-      
-      // Open email client as fallback for admins
-      const mailtoLink = `mailto:desireventuresltd@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      window.open(mailtoLink, '_blank');
+      const whatsappMessage = `Hello Desire Ventures Ltd,
+
+My name is ${name} and I'm interested in your ${formattedService} services.
+
+Contact details:
+- Email: ${email}
+- Phone: ${phone}
+
+${message}
+
+Could you please provide information about pricing and availability?`;
+
+      const encodedMessage = encodeURIComponent(whatsappMessage);
+      window.open(`https://wa.me/254706274350?text=${encodedMessage}`, '_blank');
       
       toast({
-        title: "Message sent",
-        description: "Thank you for your message. We will be in touch soon.",
+        title: "Redirecting to WhatsApp",
+        description: "We're connecting you with our team on WhatsApp.",
         duration: 5000,
       });
       
@@ -146,7 +142,7 @@ Message: ${message}
       {isSubmitted ? (
         <div className="bg-green-50 border border-green-200 text-green-700 p-4 rounded-lg mb-6 animate-fadeIn">
           <p className="font-medium">Thank you for contacting us!</p>
-          <p className="text-sm mt-1">We've received your message and will respond shortly.</p>
+          <p className="text-sm mt-1">We've redirected you to WhatsApp to continue the conversation.</p>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-6">
