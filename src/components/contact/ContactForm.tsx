@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/integrations/supabase/client';
@@ -62,7 +63,10 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
         ])
         .select();
       
-      if (error) throw error;
+      if (error) {
+        console.error("Database error:", error);
+        throw error;
+      }
       return data ? data[0] : null;
     } catch (error) {
       console.error("Error saving contact:", error);
@@ -70,10 +74,10 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
     }
   };
   
-  const getServiceLabel = () => {
-    switch(service) {
+  const getServiceLabel = (serviceValue: string) => {
+    switch(serviceValue) {
       case 'water-delivery':
-        return 'Order Tanker';
+        return 'Water Delivery';
       case 'tank-cleaning':
         return 'Tank/Reservoir Cleaning';
       case 'exhauster':
@@ -96,7 +100,7 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
       
       await sendAutomatedReply(email, name, service);
       
-      const serviceLabel = getServiceLabel();
+      const serviceLabel = getServiceLabel(service);
       
       const whatsappMessage = `Hello Desire Ventures Ltd,
 
