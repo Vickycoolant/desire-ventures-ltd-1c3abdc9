@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/integrations/supabase/client';
@@ -52,7 +51,7 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
     try {
       const { data, error } = await supabase
         .from('contacts')
-        .upsert([
+        .insert([
           { 
             name, 
             email, 
@@ -60,10 +59,7 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
             service,
             message 
           }
-        ], {
-          onConflict: 'email',
-          ignoreDuplicates: false
-        })
+        ])
         .select();
       
       if (error) throw error;
@@ -92,7 +88,6 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
     setIsSubmitting(true);
     
     try {
-      // First validate all required fields
       if (!name || !email || !phone || !service || !message) {
         throw new Error("Please fill in all required fields");
       }
@@ -101,7 +96,6 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
       
       await sendAutomatedReply(email, name, service);
       
-      // Get appropriate service label for the WhatsApp message
       const serviceLabel = getServiceLabel();
       
       const whatsappMessage = `Hello Desire Ventures Ltd,
