@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/integrations/supabase/client';
@@ -73,23 +74,39 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
     }
   };
   
+  const getServiceLabel = () => {
+    switch(service) {
+      case 'water-delivery':
+        return 'Order Tanker';
+      case 'tank-cleaning':
+        return 'Tank/Reservoir Cleaning';
+      case 'exhauster':
+        return 'Exhauster Services';
+      default:
+        return 'Other Services';
+    }
+  };
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
     try {
+      // First validate all required fields
+      if (!name || !email || !phone || !service || !message) {
+        throw new Error("Please fill in all required fields");
+      }
+      
       await saveContactToDatabase();
       
       await sendAutomatedReply(email, name, service);
       
-      const formattedService = service === 'water-delivery' ? 'Water Delivery' :
-                              service === 'tank-cleaning' ? 'Tank/Reservoir Cleaning' :
-                              service === 'exhauster' ? 'Exhauster Services' : 
-                              'Other Services';
+      // Get appropriate service label for the WhatsApp message
+      const serviceLabel = getServiceLabel();
       
       const whatsappMessage = `Hello Desire Ventures Ltd,
 
-My name is ${name} and I'm interested in your ${formattedService} services.
+My name is ${name} and I'm interested in your ${serviceLabel} services.
 
 Contact details:
 - Email: ${email}
@@ -122,12 +139,12 @@ Could you please provide information about pricing and availability?`;
       if (onSubmitSuccess) {
         onSubmitSuccess();
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Form submission error:", error);
       toast({
         variant: "destructive",
         title: "Submission Error",
-        description: "There was a problem sending your message. Please try again.",
+        description: error.message || "There was a problem sending your message. Please try again.",
         duration: 5000,
       });
     } finally {
@@ -197,7 +214,7 @@ Could you please provide information about pricing and availability?`;
               required
             >
               <option value="" disabled>Select a service</option>
-              <option value="water-delivery">Water Delivery</option>
+              <option value="water-delivery">Order Tanker</option>
               <option value="tank-cleaning">Tank/Reservoir Cleaning</option>
               <option value="exhauster">Exhauster Services</option>
               <option value="other">Other</option>
