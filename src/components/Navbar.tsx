@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
@@ -157,7 +156,7 @@ const Navbar = () => {
       {isMenuOpen && (
         <div 
           id="mobile-menu"
-          className="md:hidden fixed top-16 left-0 w-full h-[calc(100vh-4rem)] bg-primary-700/98 backdrop-blur-md z-40 overflow-y-auto transition-all transform duration-300 ease-in-out animate-in fade-in slide-in-from-top"
+          className="md:hidden fixed top-16 left-0 w-full h-[calc(100vh-4rem)] bg-primary-800 z-40 overflow-y-auto transition-all transform duration-300 ease-in-out animate-in fade-in slide-in-from-top"
         >
           <div className="flex flex-col p-6 space-y-6">
             <button 

@@ -56,7 +56,7 @@ const Hero = () => {
               rel="noopener noreferrer"
               className="water-btn group py-4 px-8 rounded-lg text-lg"
             >
-              Request Service
+              Order Tanker
             </a>
             <button 
               onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}

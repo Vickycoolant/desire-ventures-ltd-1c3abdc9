@@ -17,7 +17,7 @@ const clients = [
   },
   {
     id: 3,
-    name: "Heritage Properties Ltd",
+    name: "Heritage Property Consultants Ltd.",
     logo: "https://images.unsplash.com/photo-1625602812206-5ec545ca1231?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cHJvcGVydHl8ZW58MHx8MHx8fDA%3D",
     testimonial: "The tank cleaning service provided by Desire Ventures ensures our properties maintain the highest standards of water quality. Their team is thorough and professional."
   },
@@ -38,6 +38,24 @@ const clients = [
     name: "Karen Country Club",
     logo: "/lovable-uploads/ff3a166b-4b36-4c35-adfd-fea5d3b546da.png",
     testimonial: "The quality of service from Desire Ventures has been exceptional. Their dedication to water conservation and sustainable practices aligns perfectly with our environmental goals."
+  },
+  {
+    id: 7,
+    name: "International Committee of the Red Cross (ICRC)",
+    logo: "/lovable-uploads/1775137a-d75b-4da6-96ef-173ecc10ac16.png",
+    testimonial: "Desire Ventures provides reliable water services for our facilities in Nairobi. Their commitment to quality and timely delivery has been crucial for our humanitarian operations."
+  },
+  {
+    id: 8,
+    name: "Kings Pearl Residency",
+    logo: "/lovable-uploads/6d52fae2-e458-4633-bd64-1b8e5e3ea7f3.png",
+    testimonial: "Our residents deserve the best amenities, and Desire Ventures ensures our water supply is never compromised. Their professionalism and reliability are commendable."
+  },
+  {
+    id: 9,
+    name: "Fedha Management Ltd.",
+    logo: "/lovable-uploads/a2f5ee0d-a582-4d6a-b4b6-cac3675f4750.png",
+    testimonial: "As property managers, we need dependable service providers. Desire Ventures has consistently delivered quality water services to all our managed properties."
   }
 ];
 
@@ -125,7 +143,7 @@ const Clients = () => {
                   <div className="p-4 text-center">
                     <h3 className="font-bold">{client.name}</h3>
                     <div className="flex justify-center items-center mt-2 text-white/70">
-                      <span className="text-sm">Hover to see experience</span>
+                      <span className="text-sm">See experience</span>
                       <ArrowRight size={16} className="ml-1" />
                     </div>
                   </div>
