@@ -15,6 +15,8 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
   const [service, setService] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [customWhatsAppMessage, setCustomWhatsAppMessage] = useState(false);
+  const [whatsAppPreview, setWhatsAppPreview] = useState('');
   const { toast } = useToast();
   
   const sendAutomatedReply = async (recipientEmail: string, recipientName: string, selectedService: string) => {
@@ -87,34 +89,72 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
     }
   };
   
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  const generateWhatsAppMessage = () => {
+    if (!name || !service) return '';
     
-    try {
-      if (!name || !email || !phone || !service || !message) {
-        throw new Error("Please fill in all required fields");
-      }
-      
-      await saveContactToDatabase();
-      
-      await sendAutomatedReply(email, name, service);
-      
-      const serviceLabel = getServiceLabel(service);
-      
-      const whatsappMessage = `Hello Desire Ventures Ltd,
+    const serviceLabel = getServiceLabel(service);
+    
+    const defaultMessage = `Hello Desire Ventures Ltd,
 
 My name is ${name} and I'm interested in your ${serviceLabel} services.
 
 Contact details:
-- Email: ${email}
-- Phone: ${phone}
+- Email: ${email || '[Not provided]'}
+- Phone: ${phone || '[Not provided]'}
 
 ${message}
 
 Could you please provide information about pricing and availability?`;
 
-      const encodedMessage = encodeURIComponent(whatsappMessage);
+    return defaultMessage;
+  };
+  
+  const updateWhatsAppPreview = () => {
+    setWhatsAppPreview(generateWhatsAppMessage());
+  };
+  
+  // Update preview whenever form fields change
+  useState(() => {
+    if (customWhatsAppMessage) {
+      updateWhatsAppPreview();
+    }
+  }, [name, email, phone, service, message, customWhatsAppMessage]);
+  
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      if (!name || !phone || !service || !message) {
+        throw new Error("Please fill in all required fields");
+      }
+      
+      await saveContactToDatabase();
+      
+      if (email) {
+        await sendAutomatedReply(email, name, service);
+      }
+      
+      let whatsappText = "";
+      
+      if (customWhatsAppMessage && whatsAppPreview) {
+        whatsappText = whatsAppPreview;
+      } else {
+        const serviceLabel = getServiceLabel(service);
+        whatsappText = `Hello Desire Ventures Ltd,
+
+My name is ${name} and I'm interested in your ${serviceLabel} services.
+
+Contact details:
+- Email: ${email || '[Not provided]'}
+- Phone: ${phone}
+
+${message}
+
+Could you please provide information about pricing and availability?`;
+      }
+      
+      const encodedMessage = encodeURIComponent(whatsappText);
       window.open(`https://wa.me/254706274350?text=${encodedMessage}`, '_blank');
       
       toast({
@@ -128,6 +168,7 @@ Could you please provide information about pricing and availability?`;
       setPhone('');
       setMessage('');
       setService('');
+      setWhatsAppPreview('');
       setIsSubmitted(true);
       
       setTimeout(() => {
@@ -162,14 +203,17 @@ Could you please provide information about pricing and availability?`;
       ) : (
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name <span className="text-red-500">*</span></label>
             <input 
               type="text" 
               id="name" 
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
               placeholder="Your name"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => {
+                setName(e.target.value);
+                if (customWhatsAppMessage) updateWhatsAppPreview();
+              }}
               required
             />
           </div>
@@ -183,36 +227,44 @@ Could you please provide information about pricing and availability?`;
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
                 placeholder="your@email.com"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  if (customWhatsAppMessage) updateWhatsAppPreview();
+                }}
               />
             </div>
             
             <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+              <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number <span className="text-red-500">*</span></label>
               <input 
                 type="tel" 
                 id="phone" 
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
                 placeholder="Your phone number"
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                onChange={(e) => {
+                  setPhone(e.target.value);
+                  if (customWhatsAppMessage) updateWhatsAppPreview();
+                }}
                 required
               />
             </div>
           </div>
           
           <div>
-            <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">Service Needed</label>
+            <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">Service Needed <span className="text-red-500">*</span></label>
             <select 
               id="service" 
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
               value={service}
-              onChange={(e) => setService(e.target.value)}
+              onChange={(e) => {
+                setService(e.target.value);
+                if (customWhatsAppMessage) updateWhatsAppPreview();
+              }}
               required
             >
               <option value="" disabled>Select a service</option>
-              <option value="water-delivery">Order Tanker</option>
+              <option value="water-delivery">Water Delivery</option>
               <option value="tank-cleaning">Tank/Reservoir Cleaning</option>
               <option value="exhauster">Exhauster Services</option>
               <option value="other">Other</option>
@@ -220,17 +272,53 @@ Could you please provide information about pricing and availability?`;
           </div>
           
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+            <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message <span className="text-red-500">*</span></label>
             <textarea 
               id="message" 
               rows={4} 
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
               placeholder="Please provide details about your needs..."
               value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              onChange={(e) => {
+                setMessage(e.target.value);
+                if (customWhatsAppMessage) updateWhatsAppPreview();
+              }}
               required
             ></textarea>
           </div>
+          
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              id="custom-whatsapp"
+              className="w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
+              checked={customWhatsAppMessage}
+              onChange={(e) => setCustomWhatsAppMessage(e.target.checked)}
+            />
+            <label htmlFor="custom-whatsapp" className="ml-2 block text-sm text-gray-700">
+              Customize WhatsApp message
+            </label>
+          </div>
+          
+          {customWhatsAppMessage && (
+            <div className="p-4 border border-gray-200 bg-gray-50 rounded-lg">
+              <h4 className="font-medium text-sm mb-2 text-gray-700">WhatsApp Message Preview:</h4>
+              <textarea
+                rows={6}
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                value={whatsAppPreview}
+                onChange={(e) => setWhatsAppPreview(e.target.value)}
+                placeholder="Your customized WhatsApp message..."
+              ></textarea>
+              <button 
+                type="button"
+                className="mt-2 text-xs text-primary-600 hover:text-primary-700"
+                onClick={() => setWhatsAppPreview(generateWhatsAppMessage())}
+              >
+                Reset to default message
+              </button>
+            </div>
+          )}
           
           <button 
             type="submit" 
