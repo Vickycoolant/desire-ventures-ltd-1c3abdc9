@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { useContactForm } from '@/hooks/useContactForm';
+import { useWhatsAppForm } from '@/hooks/useWhatsAppForm';
 import FormField from './FormField';
 import WhatsAppPreview from './WhatsAppPreview';
 import SuccessMessage from './SuccessMessage';
@@ -22,7 +22,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmitSuccess }) => {
     setWhatsAppPreview,
     generateWhatsAppMessage,
     handleSubmit,
-  } = useContactForm({ onSubmitSuccess });
+  } = useWhatsAppForm({ onSubmitSuccess });
   
   const serviceOptions = [
     { value: 'water-delivery', label: 'Water Delivery' },
@@ -115,8 +115,8 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmitSuccess }) => {
           
           <SubmitButton
             isSubmitting={isSubmitting}
-            label="Send Message"
-            loadingLabel="Sending..."
+            label="Send WhatsApp Message"
+            loadingLabel="Preparing..."
           />
         </form>
       )}
