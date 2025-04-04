@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 import { useWhatsAppForm } from '@/hooks/useWhatsAppForm';
 import FormField from './FormField';
-import WhatsAppPreview from './WhatsAppPreview';
 import SuccessMessage from './SuccessMessage';
 import SubmitButton from './SubmitButton';
 
@@ -15,10 +14,8 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmitSuccess }) => {
     formData,
     isSubmitting,
     isSubmitted,
-    customWhatsAppMessage,
     whatsAppPreview,
     handleChange,
-    setCustomWhatsAppMessage,
     setWhatsAppPreview,
     generateWhatsAppMessage,
     handleSubmit,
@@ -97,14 +94,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmitSuccess }) => {
             rows={4}
           />
           
-          <div className="mt-6">
-            <h4 className="font-medium mb-2">Your WhatsApp Message</h4>
-            <WhatsAppPreview
-              whatsAppPreview={whatsAppPreview}
-              setWhatsAppPreview={setWhatsAppPreview}
-              generateDefaultMessage={generateWhatsAppMessage}
-            />
-          </div>
+          {/* WhatsApp preview is now hidden from the UI but functionality is maintained */}
           
           <SubmitButton
             isSubmitting={isSubmitting}
