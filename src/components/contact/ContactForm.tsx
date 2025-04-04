@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useWhatsAppForm } from '@/hooks/useWhatsAppForm';
 import FormField from './FormField';
 import WhatsAppPreview from './WhatsAppPreview';
@@ -22,7 +22,13 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmitSuccess }) => {
     setWhatsAppPreview,
     generateWhatsAppMessage,
     handleSubmit,
+    refreshPreview
   } = useWhatsAppForm({ onSubmitSuccess });
+  
+  // Update preview when form changes
+  useEffect(() => {
+    refreshPreview();
+  }, [formData]);
   
   const serviceOptions = [
     { value: 'water-delivery', label: 'Water Delivery' },
@@ -83,35 +89,22 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmitSuccess }) => {
           
           <FormField
             id="message"
-            label="Message"
+            label="Additional Details"
             type="textarea"
-            placeholder="Please provide details about your needs..."
+            placeholder="Please provide details about your location and specific requirements..."
             value={formData.message}
             onChange={handleChange}
-            required={true}
             rows={4}
           />
           
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              id="custom-whatsapp"
-              className="w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
-              checked={customWhatsAppMessage}
-              onChange={(e) => setCustomWhatsAppMessage(e.target.checked)}
-            />
-            <label htmlFor="custom-whatsapp" className="ml-2 block text-sm text-gray-700">
-              Customize WhatsApp message
-            </label>
-          </div>
-          
-          {customWhatsAppMessage && (
+          <div className="mt-6">
+            <h4 className="font-medium mb-2">Your WhatsApp Message</h4>
             <WhatsAppPreview
               whatsAppPreview={whatsAppPreview}
               setWhatsAppPreview={setWhatsAppPreview}
               generateDefaultMessage={generateWhatsAppMessage}
             />
-          )}
+          </div>
           
           <SubmitButton
             isSubmitting={isSubmitting}

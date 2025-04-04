@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 
 interface ContactFormData {
@@ -47,21 +47,14 @@ export const useWhatsAppForm = ({ onSubmitSuccess }: UseWhatsAppFormProps = {}) 
   };
   
   const generateWhatsAppMessage = () => {
-    if (!formData.name || !formData.service) return '';
-    
     const serviceLabel = getServiceLabel(formData.service);
     
-    const defaultMessage = `Hello Desire Ventures Ltd,
-
-My name is ${formData.name} and I'm interested in your ${serviceLabel} services.
-
-Contact details:
-- Email: ${formData.email || '[Not provided]'}
-- Phone: ${formData.phone || '[Not provided]'}
-
-${formData.message}
-
-Could you please provide information about pricing and availability?`;
+    const defaultMessage = `Hello Desire Ventures!
+${formData.name || '[Name not provided]'}
+${formData.email || '[Email not provided]'}
+${formData.phone || '[Phone not provided]'}
+${serviceLabel || '[Service not selected]'}
+${formData.message || '[No additional details provided]'}`;
 
     return defaultMessage;
   };
@@ -71,11 +64,9 @@ Could you please provide information about pricing and availability?`;
   };
   
   // Update preview whenever form fields change
-  useEffect(() => {
-    if (customWhatsAppMessage) {
-      updateWhatsAppPreview();
-    }
-  }, [formData, customWhatsAppMessage]);
+  const refreshPreview = () => {
+    updateWhatsAppPreview();
+  };
   
   const resetForm = () => {
     setFormData({
@@ -93,11 +84,13 @@ Could you please provide information about pricing and availability?`;
     setIsSubmitting(true);
     
     try {
-      if (!formData.name || !formData.phone || !formData.service || !formData.message) {
-        throw new Error("Please fill in all required fields");
+      // Validate required fields
+      if (!formData.name || !formData.phone) {
+        throw new Error("Please provide your name and phone number");
       }
       
-      let whatsappText = customWhatsAppMessage && whatsAppPreview 
+      // Use the custom message if provided, otherwise generate the default format
+      let whatsappText = customWhatsAppMessage && whatsAppPreview.trim() !== '' 
         ? whatsAppPreview 
         : generateWhatsAppMessage();
       
@@ -144,5 +137,6 @@ Could you please provide information about pricing and availability?`;
     setWhatsAppPreview,
     generateWhatsAppMessage,
     handleSubmit,
+    refreshPreview,
   };
 };
