@@ -49,7 +49,7 @@ export const useWhatsAppForm = ({ onSubmitSuccess }: UseWhatsAppFormProps = {}) 
   const generateWhatsAppMessage = () => {
     const serviceLabel = getServiceLabel(formData.service);
     
-    const defaultMessage = `Hello Desire Ventures!
+    const defaultMessage = `Hello Desire Ventures! I am interested in your service(s)
 Name: ${formData.name || '[Name not provided]'}
 Email: ${formData.email || '[Email not provided]'}
 Phone: ${formData.phone || '[Phone not provided]'}

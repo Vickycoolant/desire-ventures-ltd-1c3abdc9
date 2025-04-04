@@ -108,7 +108,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmitSuccess }) => {
           
           <SubmitButton
             isSubmitting={isSubmitting}
-            label="Send WhatsApp Message"
+            label="Send Message"
             loadingLabel="Preparing..."
           />
         </form>
