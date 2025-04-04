@@ -50,11 +50,11 @@ export const useWhatsAppForm = ({ onSubmitSuccess }: UseWhatsAppFormProps = {}) 
     const serviceLabel = getServiceLabel(formData.service);
     
     const defaultMessage = `Hello Desire Ventures!
-${formData.name || '[Name not provided]'}
-${formData.email || '[Email not provided]'}
-${formData.phone || '[Phone not provided]'}
-${serviceLabel || '[Service not selected]'}
-${formData.message || '[No additional details provided]'}`;
+Name: ${formData.name || '[Name not provided]'}
+Email: ${formData.email || '[Email not provided]'}
+Phone: ${formData.phone || '[Phone not provided]'}
+Service: ${serviceLabel || '[Service not selected]'}
+Details: ${formData.message || '[No additional details provided]'}`;
 
     return defaultMessage;
   };
