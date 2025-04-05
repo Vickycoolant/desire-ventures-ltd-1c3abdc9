@@ -216,9 +216,15 @@ const Footer = () => {
               <Separator orientation="vertical" className="hidden md:inline-block mx-2 h-4" />
               <span>Company Director: James Macharia (CPA, ACCT)</span>
             </div>
-            <p className="text-sm text-gray-400">
-              Providing premium water services throughout Nairobi and beyond.
-            </p>
+            <div className="flex flex-col md:flex-row items-center">
+              <p className="text-sm text-gray-400 md:mr-2">
+                Providing premium water services throughout Nairobi and beyond.
+              </p>
+              <Separator orientation="vertical" className="hidden md:inline-block mx-2 h-4" />
+              <p className="text-sm text-gray-400">
+                Site Developed by: <a href="https://victordev.co.ke" target="_blank" rel="noopener noreferrer" className="text-primary-300 hover:underline">Victor.Dev</a> - <a href="https://victordev.co.ke" target="_blank" rel="noopener noreferrer" className="text-primary-300 hover:text-primary-200 hover:underline">https://victordev.co.ke</a>
+              </p>
+            </div>
           </div>
         </div>
       </div>
