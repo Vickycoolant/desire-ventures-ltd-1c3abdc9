@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -40,12 +41,12 @@ const Hero = () => {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             <span className="block reveal reveal-delay-1">Reliable Clean Water Delivery</span>
             {!isMobile && (
-              <span className="block text-primary-200 reveal reveal-delay-2">When You Need It, Where You Need It!</span>
+              <span className="block text-primary-200 reveal reveal-delay-2">The Fastest Clean Water Deliveries in Nairobi!</span>
             )}
           </h1>
           
           <p className="text-xl text-white/90 max-w-3xl mx-auto mb-10 reveal reveal-delay-3">
-            The Fastest Clean Water Deliveries in Nairobi!
+            When You Need It, Where You Need It!
           </p>
           
           <div className={`flex flex-col sm:flex-row ${isMobile ? 'justify-center' : 'justify-start'} gap-4 reveal reveal-delay-4 mb-16 md:mb-0`}>
