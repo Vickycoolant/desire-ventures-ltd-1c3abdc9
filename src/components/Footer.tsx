@@ -218,7 +218,7 @@ const Footer = () => {
             </div>
             <div className="flex flex-col md:flex-row items-center">
               <p className="text-sm text-gray-400 md:mr-2">
-                Providing premium water services throughout Nairobi and beyond.
+                Providing clean water and water services throughout Nairobi and beyond.
               </p>
               <Separator orientation="vertical" className="hidden md:inline-block mx-2 h-4" />
               <p className="text-sm text-gray-400">

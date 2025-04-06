@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -39,7 +38,7 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-20 flex flex-col md:flex-row items-center">
         <div className={`md:w-3/5 text-left md:text-left ${isMobile ? 'text-center' : ''} transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0 translate-y-10'}`}>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            <span className="block reveal reveal-delay-1">Reliable Bulk Water Delivery</span>
+            <span className="block reveal reveal-delay-1">Reliable Clean Water Delivery</span>
             {!isMobile && (
               <span className="block text-primary-200 reveal reveal-delay-2">When You Need It, Where You Need It!</span>
             )}
@@ -99,7 +98,6 @@ const Hero = () => {
           </div>
         </div>
         
-        {/* Scroll Indicator */}
         <div 
           className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-white animate-bounce cursor-pointer"
           onClick={scrollToServices}
@@ -108,7 +106,6 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Animated Wave Bottom */}
       <div className="absolute bottom-0 left-0 w-full z-10">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full">
           <path 
