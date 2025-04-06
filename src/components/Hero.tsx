@@ -45,8 +45,8 @@ const Hero = () => {
             )}
           </h1>
           
-          <p className="text-xl text-white/90 max-w-3xl mx-auto mb-10 reveal reveal-delay-3">
-            When You Need It, Where You Need It!
+          <p className="text-xl font-semibold text-white/90 max-w-3xl mx-auto mb-10 reveal reveal-delay-3">
+            Water When You Need It, Where You Need It!
           </p>
           
           <div className={`flex flex-col sm:flex-row ${isMobile ? 'justify-center' : 'justify-start'} gap-4 reveal reveal-delay-4 mb-16 md:mb-0`}>
