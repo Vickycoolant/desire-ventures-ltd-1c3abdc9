@@ -45,9 +45,8 @@ const ContactDetails = () => {
         </ContactInfoItem>
         
         <ContactInfoItem icon={Clock} title="Business Hours">
-          <p className="text-gray-700">Monday - Friday: 8:00 AM - 6:00 PM</p>
-          <p className="text-gray-700">Saturday: 9:00 AM - 4:00 PM</p>
-          <p className="text-gray-700">24/7 Emergency Services Available</p>
+          <p className="text-gray-700 font-medium">Open 24 Hours, 7 Days a Week</p>
+          <p className="text-gray-700">Always Available for Your Water Needs</p>
         </ContactInfoItem>
       </div>
     </div>
